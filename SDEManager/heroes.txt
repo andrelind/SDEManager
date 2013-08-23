@@ -1,0 +1,31 @@
+Angry Bear;Shapeshift;;6.3.5.1;0.2.0.0;0.2.0.0;1.1.0.0;2.0.0.0;Immune: X(Poison), Immune: X(Knockdown); Bear Charge, Bear Hug, Shapeshift(Deeproot Druid), Nourishing Berries
+
+Celestial Herald;Celestial Hero;;7.3.5.1;2.0.0.0;3.0.0.0;1.1.0.0;0.2.0.0;Fly, Missile X(6), Immune: X(Knockdown);  Arrow Storm, Heart Seeker, Halo Extract
+
+Claw Tribe Barbarian;Human Hero;;6.3.5.1;0.2.0.0;3.0.0.0;2.0.0.0;2.0.0.0; Berserk, Tough;Rage, Fury's Blood
+
+Deeproot Druid;Half-Elf Hero;;7.3.5.1;3.0.0.0;1.1.0.0;1.1.0.0;2.0.0.0;Poison, Immune: X(Poison); Stranglethorn, Briar Armor, Shapeshift(Angry Bear), Nourishing Berries
+
+Deeproot Scout;Elf Hero;;7.3.5.1;1.1.0.0;3.0.0.0;2.0.0.0;1.1.0.0;;Boomerang, Bow, Acorn Grenade, Sprite Syrup
+
+Ember Mage;Human Hero;;6.3.5.2;2.0.0.0;3.0.0.0;0.2.0.0;1.1.0.0;Magic X(8), Fire;Fire Wave, Magma Strike, White Mage Potion, Fire Water
+
+Glimmerdusk Ranger;Elf Hero;;7.3.5.1;1.1.0.0;3.0.0.0;2.0.0.0;0.2.0.0;Missile X(8); Herbalist, Sparkle Burst, Pixie Dust
+
+Hearthsworn Fighter;Dwarf Hero;;6.3.6.1;2.1.0.0;0.2.0.0;2.0.0.0;2.0.0.0;Immune: X(Knockdown), Immune: X(Poison);Dwarven Curse, Cleave, Hero's Balm
+
+Hexcast Sorceress;Human Hero;;6.3.5.1;2.0.0.0;3.0.0.0;1.1.0.0;1.1.0.0;Magic X(8); Frozen Feet, Hobbled Hands, Broken Bones, Wizard Wings
+
+Princess Ruby;Human Hero;;6.3.5.1;2.0.0.0;3.0.0.0;3.0.0.0;2.1.0.0;Magic X(6), Dodge; Maiden's Favor, Maiden's Token, Maiden's Kiss, Happily Ever After
+
+Royal Paladin;Human Hero;Paladin;6.3.5.1;3.0.0.0;1.1.0.0;1.1.0.0;2.0.0.0;Healer, Holy; Iron Halo, Smite, Elixir
+
+Riftling Rogue;Demonkin Hero;;7.3.5.1;3.0.0.0;2.0.0.0;1.1.0.0;0.2.0.0;Dodge, Luck, Stealth;Bamf!, Backstab, Dimensional Draught
+
+Sister of Light; Human Hero;;6.3.5.1;1.1.0.0;0.2.0.0;1.1.0.0;2.0.0.0;Holy;Hammer of Judgement, Purification, Elixir of Light
+
+Star Guild Sapper;Dwarf Hero;;6.3.6.1;2.1.0.0;1.1.0.0;2.0.0.0;2.0.0.0;Immune: X(Knockdown), Reach X(2);Astral Hammer, POW!, Star Shine, Burning Bloom
+
+Von Wilding;Human Hero;;6.3.5.2;1.1.0.0;3.0.0.0;1.1.0.0;0.2.0.0;Reach X(2);Whip Master, Crack the Whip, Shapeshift (Von Wilder), Holy Water, Holy Oil
+
+Von Wilder;Shapeshift;;8.3.5.2;1.1.0.0;3.0.0.0;2.0.0.0;1.1.0.0;Touch, Vulnerable X(Magic);Shag Fest, Shapeshift (Von Wilding)

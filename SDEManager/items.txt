@@ -1,0 +1,20 @@
+
+2;Rune of Rage;ATT;{w}{+1};;RAAAAARGH!
+2;Intimidating Axe;ATT;{b}{+1};Pacify;I wouldn't do that if I were you.
+2;Frozen Falchion;ATT;{b}{+1};Cold;Hypothermia, guaranteed!
+2;Serpent Sword;ATT;{b}{+1};Poison;The favored weapon of the unsavory.
+2;Rune of Strenght;ATT;{b}{+1};;Might makes right.
+
+3;Rune of Defence;ARM;{b}{+1};;Stop hitting me!
+3;Spiked Gauntlets;ATT;{b}{+1};Immune: X(Weak);They make me punch harder and longer!
+3;Sorcerer's Cowl;WILL;{b}{+1};Immune: X(Stun);Lead-lined for maximum lightning protection.
+3;Rune of Better Defence;ARM;{r}{+1};;Nothin protects like Better Defence.
+3;Wizard's Robes;WILL;{b}{+1};Immune: X(Bind);I think not.
+3;Elfin Boots;DEX;{b}{+1};Immune: X(Slow);Nothing slows me down when I wear my dancin' shoes!
+
+4;Rune of the Panther;DEX;{r}{+1};;Silence and grace.
+4;Rune of the Lynx;DEX;{w}{+1};;Quick and sure.
+4;Rune of the Sage;WILL;{w}{+1};;There is no spoon.
+4;Rune of Meditation;WILL;{r}{+1};;I think therefore I am.
+4;Rune of the Stray;DEX;{b}{+1};;Nice kitty.
+2;Rune of Haste;Action;{a}{+1};;I'm the best around.

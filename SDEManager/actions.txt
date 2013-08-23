@@ -1,0 +1,86 @@
+-- Angry Bear --
+Bear Charge;{ra}{2};{r}{+1} ATT, Knockdown
+Bear Hug;{ra}{2};Immobile, Weak
+Shapeshift;{ba}{1};Deeproot Druid
+Nourishing Berries;{p}{};All Heroes gain Healer
+
+-- Celestial Herald --
+Arrow Storm;{ra}{2};DEX vs. ARM, Spray X(4)
+Heart Seeker;{ra}{2};Missile X(8), {r}{+1} DEX, Hookshot
+Halo Extract;{p}{};Aura X(1), {w}{+1} ARM
+
+-- Claw Tribe Barbarian --
+Rage;{ra}{3};After every square you move this turn immediately make one melee attack. You may not make a Berserk attack on a turn you Rage. Barbarian's ARM is reduced to {b}{2} until her next activation.
+Fury's Blood;{p}{};{b}{+1} ARM, Backlash
+
+-- Deeproot Druid --
+Stranglethorn;{ra}{2};Magic X(6), Burst X(1), Slow
+Briar Armor;{ba}{1};Backlash
+Shapeshift;{ba}{1};Angry Bear
+Nourishing Berries;{p}{};All Heroes gain Healer
+
+-- Deeproot Scout --
+Boomerang;{ba}{1};Range X(6), Hookshot. Place target Treasure Chest in an empty square adjacent to Deeproot Scout.
+Bow;{ra}{1}; Missile X(8)
+Acorn Grenade;{ra}{2};Range X(6), Burst X(1), Knockdown, Dangerous
+Sprite Syrup;{p}{};{a}{+1}
+
+-- Ember Mage --
+Fire Wave;{ra}{2};Wave X(1)
+Magma Strike;{ra}{2};{b}{+3} WILL
+White Mage Potion;{p}{};Augment, Wave X(5), Heal X(1)
+Fire Water;{p}{};{b}{+1} ATT, Fire
+
+-- Glimmerdusk Ranger --
+Herbalist;{ba}{1};Augment, Range X(6), Remedy
+Sparkle Burst;{ra}{2};Burst X(1)
+Pixie Dust;{p}{};{b}{+1} DEX, Stealth
+
+- Hearthsworn Fighter --
+Dwarven Curse;{ba}{2}; Wave X(3), Pull X(3), ATT vs. WILL
+Cleave;{ra}{1}; Sweep X(1), Dangerous
+Hero's Balm;{p}{};The current attack is applied to the Hero affected by Hero's Balm as though they were the target of the attack instead.
+
+-- Hexcast Sorceress --
+Frozen Feet;{ra}{1};{b}{+1} WILL, Cold
+Hobbled Hands;{ra}{1};{b}{+1} WILL, Weak
+Broken Bones;{ra}{1};{b}{+1} WILL, Fragile
+Wizard Wings;{p}{};{b}{+1} WILL, Fly
+
+-- Paladin --
+Iron Halo;{ba}{1};Augment, Aura X(3), {b}{+1} ARM;
+Smite;{ra}{2};{r}{+1} ATT, Knockdown, Fire
+Elixir;{p}{};Heal X(3), Remedy
+
+-- Princess Ruby --
+Maiden's Favor;{ba}{1};Augment, Range X(6),{b}{+1}ATT
+Maiden's Token;{ba}{1};Augment, Range X(6),{b}{+1}WILL
+Maiden's Kiss;{ba}{1};Augment, Range X(2), Heal X(1)
+Happily Ever After;{p}{};Discard a single drawn loot or relic card and immediately draw another;
+
+-- Riftling Rogue --
+Bamf!;{ba}{1};Wave X(2), Smoke
+Backstab;{ra}{3};Massive Damage, {g}{+1} ATT
+Dimensional Draught;{p}{};Hero affected by Dimensional Draught may immediately Teleport
+
+-- Sister of Light --
+Hammer of Judgement;{ra}{1}; Cross X(1), Push X(1)
+Purification;{ba}{1}; Augment, Cross X(2), Heal X(1), Remedy
+Elixir of Light;{p}{}; All melee attacks made by the affected Hero gain "Cross X(1), Holy, Fire"
+
+-- Star Guild Sapper --
+Astral Hammer;{ra}{2};Cross X(2), Knockdown
+POW!;{ra}{2};{r}{+1} ATT, Massive Damage
+Star Shine;{ba}{1};Augment, Immune: X(Status Effects)
+Burning Bloom;{p}{};All non special attacks made by the affected Hero gain "Range X(8), Fire"
+
+-- Von Wilding --
+Whip Master;{ra}{2};{b}{+1} ATT, Pacify
+Crack the Whip;{ba}{1};Compel X(2)
+Shapeshift;{ba}{1};Von Wilder
+Holy Water;{p}{1};{ba}{} Range X(4), Burst X(1), models hit suffer "Vulnerable: X(Holy)"
+Holy Oil;{p}{1};{ra}{} Range X(4), Burst X(1), Holy, Fire
+
+-- Von Wilder --
+Shag Fest;{ra}{1};Sweep X(1), {r}{+1} ATT, Dangerous, Lycanthropy
+Shapeshift;{ba}{1};Von Wilding

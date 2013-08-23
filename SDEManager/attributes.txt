@@ -1,0 +1,57 @@
+-- Combat effects --
+0;Augment;Abilities with Augment may only target or affect friendly models that are hit, including the user.
+0;Backlash;If a model with Backlash exceeds an attack roll with their defence roll the attacker takes one wound. Wounds caused by Backlash do not advance the Power Gauge.
+0;Berserk;During its activation a model with Berserk may make a single melee attack costing no action points.
+0;Dangerous;Abilities with Dangerous damage both enemy and friendly models that are hit.
+0;Dodge;A model with Dodge may use their DEX when making defense rolls unless they are suffering from Knockdown, Immobile or Slow
+0;Fly;A model with Fly may ignore and move through squares containing enemy models, difficult terrain, and tile effects.
+0;Heal X;A model affected by Heal may remove a number of wound counters or a number of status effects equal to the value of X.
+0;Healer;When a model with Healer rolls a Heart on an attack roll they gain two Hearts instead of one if they successfully inflict a wound.
+0;Holy;A model with Holy may reroll a single dice when making an attack versus undead or demons.
+0;Hookshot;Hookshot may be used in combination with any distance effect. Hookshot allows the user to target a model it does not have line of sight to.
+0;Immune: X;A model with Immune ignores and immediately removes all counters or effects of the ability listed as X.
+0;Luck;A model with Luck may gain a Potion instead of a Heart when rolled on the dice and vice versa. In addition, when opening a treasure chest they may draw two cards from the treasure deck and equip one, discard the other.
+0;Lycanthropy;Wounded models that are not removed from play may gain {r}{+1} ATT and suffer Vulnerable: Magic.
+0;Massive Damage;When an attack with Massive Damage inflicts a wound it instead inflicts two wounds.
+0;Reach X;This ability allows the model to target an enemy with a melee attack up to X squares away. A model may use any of its abilities or special actions using Reach X, unless specified otherwise.
+0;Remedy;A model affected by Remedy may immediately remove all Status Effect counters.
+0;Resurrect;Choose a model that has been destroyed. Roll {b}{1}￼ for every heart on its stat card. Remove one wound counter for every star rolled. After the roll, if the target model has more hearts than wound counters, return it to play adjacent to the start marker. The model retains any equipment and potions that it had when it was destroyed. All status effects that it may have been suffering are removed.
+0;Smoke;When a model with Stealth is targeted by a ranged effect they may immediately make a DEX roll. Subtract the number of stars rolled from the attacker's range. If the roll causes the attacker to be out of range the attack is considered to have failed.
+0;Stealth;When a model with Stealth is targeted by a ranged effect they may immediately make a DEX roll. Subtract the number of stars rolled from the attacker's range. If the roll causes the attacker to be out of range the attack is considered to have failed.
+0;Surefoot;Each square of difficult terrain a model with Surefoot enters costs one point of Speed instead of two.
+0;Teleport;A model that Teleports may move to any empty square within ten squares and line of sight of their current square.
+0;Tough;At the beginning of their activation a model with Tough may remove a single wound counter before Status Effects are resolved.
+
+-- Distance effects --
+1;Magic X;A model with Magic X may target a model up to X squares away. If a model is making an attack using Magic X they must use their WILL attribute when making their attack roll, unless specified otherwise.
+1;Missile X;A model with Missile X may target a model up to X squares away. If a model is making an attack using Missile X they must use their DEX attribute when making their attack roll, unless specified otherwise.
+1;Range X;A model with Range X may target a model up to X squares away. If a model is making an attack using Range X they must use their ATT attribute when making their attack roll, unless specified otherwise.
+
+-- Status effects --
+2;Bind;A model or effect with Bind places a Bind counter on any model it damages. A model suffering Bind may not use any Special Actions.
+2;Choke;A model or effect with Choke places a Choke counter on any model it damages. A model suffering Choke may not drink potions.
+2;Cold;A model or effect with Cold places a Cold counter on any model it damages. A model suffering Cold discards the highest result rolled anytime it makes a roll using its DEX attribute.
+2;Fire;A model or ability with Fire places a Fire counter on any model it damages. A model suffering Fire takes one wound at the beginning of its activation every round until the Fire counter is removed. Wounds caused by Fire do not advance the Power Gauge.
+2;Fragile;A model or effect with Fragile places a Fragile counter on any model it damages. A model suffering Fragile discards the highest result rolled anytime it makes a roll using its ARM attribute.
+2;Immobile;A model or ability with Immobile places an Immobile counter on any model it damages. A model suffering Immobile may not move during its turn. If a model suffering from Immobile takes damage from any source (even one that normally causes Immobile), it gains Immune: Immobile until the beginning of it’s next activation.
+2;Knockdown;A model or ability with Knockdown places a Knockdown counter on any model it damages. A model suffering Knockdown may not move or perform any other action until it spends one action point to remove the counter and stand up.
+2;Pacify;A model or effect with Pacify places a Pacify counter on any model it damages. A model suffering Pacify may not use any Special Attacks.
+2;Poison;A model or ability with Poison places a Poison counter on any model it damages. A model suffering Poison loses one action point during its activation.
+2;Slow;A model or ability with Slow places a Slow counter on any model it damages. A model suffering Slow halves its Speed (rounding up) during its activation.
+2;Stun;A model or effect with Stun places a Stun counter on any model it damages. A model suffering Stun discards the highest result rolled anytime it makes a roll using its WILL attribute.
+2;Vulnerable: X;If a model with Vulnerable X is targeted by the ability listed as X, it must discard the highest result rolled of any defense roll it makes against that ability.
+2;Weak;A model or effect with Weak places a Weak counter on any model it damages. A model suffering Weak discards the highest result rolled anytime it makes a roll using its ATT attribute.
+
+-- Area effects --
+3;Burst X;Determine a Burst effect’s target as normal using the model’s inherent distance ability (Magic X, Range X, Missile X) or the one listed in the area effect action. After the target has been selected it and every model within X squares of the target and in the target’s line of sight are hit by the effect. If a large model is targeted by a Burst effect choose one square occupied by its base as the square targeted and determine who is hit from it as normal.
+3;Cross X;A Cross effect is centered on the user’s square and hits the user and every model within X squares of the user, but does not affect any diagonal squares. Crosses replace the distance portion (X) of a distance effect, but do not replace any other aspect of the ability.
+3;Lance X;A Lance effect draws a straight line directly away from the user’s square along a distance of X. Every model along this line is hit. Lance effects may not be used along diagonals and replace the distance portion (X) of a distance effect, but do not replace any other aspect of the ability.
+3;Spray X;A Spray effect hits multiple models in a “V” pattern up to X squares away. Spray effects may not be used along diagonals and distance portion (X) of a distance effect, but do not replace any other aspect of the ability.
+3;Sweep X;A Sweep effect hits every model within X squares of a single side of the user’s square, along a straight line. Sweep effects may not be used along diagonals and replace the distance portion (X) of a distance effect, but do not replace any other aspect of the ability.
+3;Wave X;A Wave effect is centered on the user’s square and hits the user and every model within X squares of the user. Waves replace the distance portion (X) of a distance effect, but do not replace any other aspect of the ability.
+3;Aura X;An Aura effect follows the same rules as Wave X with one important difference - Auras remain in play, centered on and moving with the user, until the beginning of their next activation.
+
+-- Control effects --
+4;Compel X;A model targeted by Compel may be moved a number of squares up to the value of X in any direction.
+4;Pull X;A model targeted by Pull may be moved a number of squares up to the value of X towards the attacker. A model moved by Pull must, after each square moved, be closer to the attacker than it began. Once the two models are adjacent, the target model may then be moved the remainder of X squares so to be still adjacent to the attacker.
+4;Push X;A model targeted by Push may be moved a number of squares up to the value of X away from the attacker. A model moved by Push must, after each square moved, be further away from the attacker than it began.

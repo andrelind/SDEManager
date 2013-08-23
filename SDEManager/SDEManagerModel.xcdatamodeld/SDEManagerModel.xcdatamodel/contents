@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3394" systemVersion="12E55" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="DBCharacter" representedClassName="DBCharacter" syncable="YES">
+        <attribute name="abilitiesText" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="armBlueDice" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="armGreenDice" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="armRedDice" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="armWhiteDice" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="attBlueDice" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="attGreenDice" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="attRedDice" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="attWhiteDice" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="dexBlueDice" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="dexGreenDice" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="dexRedDice" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="dexWhiteDice" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="imageName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="movement" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="numberOfActions" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="numberOfHearts" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="numberOfPotions" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="willBlueDice" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="willGreenDice" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="willRedDice" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="willWhiteDice" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="abilities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SDEAttribute" inverseName="dbCharacters" inverseEntity="SDEAttribute" syncable="YES"/>
+        <relationship name="actions" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="SDEAction" inverseName="dbCharacters" inverseEntity="SDEAction" syncable="YES"/>
+        <relationship name="shapeshift" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBCharacter" inverseName="shapeshift" inverseEntity="DBCharacter" syncable="YES"/>
+    </entity>
+    <entity name="SDEAction" representedClassName="SDEAction" syncable="YES">
+        <attribute name="text" attributeType="String" syncable="YES"/>
+        <attribute name="title" attributeType="String" syncable="YES"/>
+        <attribute name="token" attributeType="String" syncable="YES"/>
+        <relationship name="attributes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SDEAttribute" inverseName="actions" inverseEntity="SDEAttribute" syncable="YES"/>
+        <relationship name="dbCharacters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DBCharacter" inverseName="actions" inverseEntity="DBCharacter" syncable="YES"/>
+        <relationship name="sdeCharacters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SDECharacter" inverseName="actions" inverseEntity="SDECharacter" syncable="YES"/>
+    </entity>
+    <entity name="SDEAttribute" representedClassName="SDEAttribute" syncable="YES">
+        <attribute name="longDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="actions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SDEAction" inverseName="attributes" inverseEntity="SDEAction" syncable="YES"/>
+        <relationship name="dbCharacters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DBCharacter" inverseName="abilities" inverseEntity="DBCharacter" syncable="YES"/>
+        <relationship name="sdeCharacters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SDECharacter" inverseName="abilities" inverseEntity="SDECharacter" syncable="YES"/>
+        <relationship name="statusEffects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SDECharacter" inverseName="statusEffects" inverseEntity="SDECharacter" syncable="YES"/>
+    </entity>
+    <entity name="SDECharacter" representedClassName="SDECharacter" syncable="YES">
+        <attribute name="abilitiesText" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="armBlueDice" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="armGreenDice" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="armRedDice" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="armWhiteDice" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="attBlueDice" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="attGreenDice" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="attRedDice" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="attWhiteDice" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="dexBlueDice" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="dexGreenDice" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="dexRedDice" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="dexWhiteDice" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="imageName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isShapeshifted" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="movement" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="numberOfActions" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="numberOfHearts" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="numberOfPotions" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="type" attributeType="String" syncable="YES"/>
+        <attribute name="willBlueDice" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="willGreenDice" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="willRedDice" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="willWhiteDice" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="abilities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SDEAttribute" inverseName="sdeCharacters" inverseEntity="SDEAttribute" syncable="YES"/>
+        <relationship name="actions" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="SDEAction" inverseName="sdeCharacters" inverseEntity="SDEAction" syncable="YES"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SDEItem" inverseName="characters" inverseEntity="SDEItem" syncable="YES"/>
+        <relationship name="shapeshift" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SDECharacter" inverseName="shapeshift" inverseEntity="SDECharacter" syncable="YES"/>
+        <relationship name="statusEffects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SDEAttribute" inverseName="statusEffects" inverseEntity="SDEAttribute" syncable="YES"/>
+    </entity>
+    <entity name="SDEItem" representedClassName="SDEItem" syncable="YES">
+        <attribute name="additionalText" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="header" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="modifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="characters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SDECharacter" inverseName="items" inverseEntity="SDECharacter" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="DBCharacter" positionX="223" positionY="-367" width="128" height="448"/>
+        <element name="SDEAction" positionX="412" positionY="261" width="128" height="133"/>
+        <element name="SDEAttribute" positionX="153" positionY="140" width="128" height="148"/>
+        <element name="SDECharacter" positionX="-74" positionY="-64" width="128" height="493"/>
+        <element name="SDEItem" positionX="153" positionY="423" width="128" height="133"/>
+    </elements>
+</model>
