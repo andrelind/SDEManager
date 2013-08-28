@@ -13,6 +13,7 @@ extern const struct SDEAttributeAttributes {
 extern const struct SDEAttributeRelationships {
 	__unsafe_unretained NSString *actions;
 	__unsafe_unretained NSString *dbCharacters;
+	__unsafe_unretained NSString *items;
 	__unsafe_unretained NSString *sdeCharacters;
 	__unsafe_unretained NSString *statusEffects;
 } SDEAttributeRelationships;
@@ -22,6 +23,7 @@ extern const struct SDEAttributeFetchedProperties {
 
 @class SDEAction;
 @class DBCharacter;
+@class SDEItem;
 @class SDECharacter;
 @class SDECharacter;
 
@@ -90,6 +92,13 @@ extern const struct SDEAttributeFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSSet *items;
+
+- (NSMutableSet*)itemsSet;
+
+
+
+
 @property (nonatomic, strong) NSSet *sdeCharacters;
 
 - (NSMutableSet*)sdeCharactersSet;
@@ -118,6 +127,11 @@ extern const struct SDEAttributeFetchedProperties {
 - (void)removeDbCharacters:(NSSet*)value_;
 - (void)addDbCharactersObject:(DBCharacter*)value_;
 - (void)removeDbCharactersObject:(DBCharacter*)value_;
+
+- (void)addItems:(NSSet*)value_;
+- (void)removeItems:(NSSet*)value_;
+- (void)addItemsObject:(SDEItem*)value_;
+- (void)removeItemsObject:(SDEItem*)value_;
 
 - (void)addSdeCharacters:(NSSet*)value_;
 - (void)removeSdeCharacters:(NSSet*)value_;
@@ -163,6 +177,11 @@ extern const struct SDEAttributeFetchedProperties {
 
 - (NSMutableSet*)primitiveDbCharacters;
 - (void)setPrimitiveDbCharacters:(NSMutableSet*)value;
+
+
+
+- (NSMutableSet*)primitiveItems;
+- (void)setPrimitiveItems:(NSMutableSet*)value;
 
 
 

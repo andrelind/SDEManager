@@ -28,6 +28,7 @@
 	<array>
 		<string>Adelon-Bold.ttf</string>
 		<string>albertus-mt.ttf</string>
+		<string>AlbertusMTItalic.ttf</string>
 	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>Main_iPhone</string>

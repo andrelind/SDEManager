@@ -5,6 +5,7 @@
 
 const struct SDEItemAttributes SDEItemAttributes = {
 	.additionalText = @"additionalText",
+	.attributeText = @"attributeText",
 	.header = @"header",
 	.modifier = @"modifier",
 	.name = @"name",
@@ -12,6 +13,7 @@ const struct SDEItemAttributes SDEItemAttributes = {
 };
 
 const struct SDEItemRelationships SDEItemRelationships = {
+	.attributes = @"attributes",
 	.characters = @"characters",
 };
 
@@ -57,6 +59,13 @@ const struct SDEItemFetchedProperties SDEItemFetchedProperties = {
 
 
 @dynamic additionalText;
+
+
+
+
+
+
+@dynamic attributeText;
 
 
 
@@ -109,6 +118,19 @@ const struct SDEItemFetchedProperties SDEItemFetchedProperties = {
 
 
 
+
+@dynamic attributes;
+
+	
+- (NSMutableSet*)attributesSet {
+	[self willAccessValueForKey:@"attributes"];
+  
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"attributes"];
+  
+	[self didAccessValueForKey:@"attributes"];
+	return result;
+}
+	
 
 @dynamic characters;
 

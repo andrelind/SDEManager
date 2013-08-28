@@ -3,6 +3,7 @@
 #import "SDEAction.h"
 #import "DBCharacter.h"
 #import "SDECharacter.h"
+#import "SDEItem.h"
 
 @implementation SDEAppDelegate
 
@@ -15,28 +16,15 @@
 	if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 		isIpad = YES;
 
-	/*
-	// Get all current characters, get their attributes and actions
-	NSMutableDictionary* oldChar = [NSMutableDictionary dictionary];
-	for(SDECharacter* c in [SDECharacter MR_findAll]){
-		NSMutableArray* actions = [NSMutableArray array];
-		for (SDEAction* a in c.actions)
-			 [actions addObject:a.title];
-		
-		NSMutableArray* attributes = [NSMutableArray array];
-		for (SDEAttribute* a in c.abilities)
-			[attributes addObject:a.title];
-		
-		oldChar[c.name] = @{@"actions": actions, @"attributes":attributes};
-	}*/
 	
 /*
 	[MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
 		[DBCharacter MR_truncateAllInContext:localContext];
 		[SDEAction MR_truncateAllInContext:localContext];
+		[SDEItem MR_truncateAllInContext:localContext];
 		[SDEAttribute MR_truncateAllInContext:localContext];
-	}];*/
-
+	}];
+*/
 	if(![SDEAttribute MR_countOfEntities]){
 		NSString* attributesFile = [NSBundle.mainBundle pathForResource:@"attributes" ofType:@"txt"];
 		
@@ -71,6 +59,33 @@
 					for(NSString* attributeName in attributes){
 						SDEAttribute* attribute = [SDEAttribute MR_findFirstByAttribute:@"title" withValue:attributeName];
 						if(attribute) [action addAttributesObject:attribute];
+					}
+				}
+			}
+		}];
+	}
+	
+	if(![SDEItem MR_countOfEntities]){
+		NSString* itemsFile = [NSBundle.mainBundle pathForResource:@"items" ofType:@"txt"];
+		
+		[MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
+			for(NSString* line in [self linesInFileWithPath:itemsFile]){
+				NSArray* props = [line componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@";"]];
+				
+				if(props.count > 2){
+					SDEItem* item = [SDEItem MR_createInContext:localContext];
+					item.type = @([props[0] integerValue]);
+					item.name = props[1];
+					item.header = props[2];
+					item.modifier = props[3];
+					item.additionalText = props[5];
+					
+					NSArray* attributes = nil;
+					item.attributeText = [self findAttributeInString:props[4] attributeNames:&attributes];
+					
+					for(NSString* attributeName in attributes){
+						SDEAttribute* attribute = [SDEAttribute MR_findFirstByAttribute:@"title" withValue:attributeName];
+						if(attribute) [item addAttributesObject:attribute];
 					}
 				}
 			}

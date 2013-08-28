@@ -38,6 +38,7 @@
     
 	SDEAttribute* status = self.statuses[indexPath.row];
 	cell.textLabel.text = status.title;
+	cell.textLabel.font = [UIFont fontWithName:@"Adelon-Bold" size:15];
 	
 	cell.imageView.image = [UIImage imageNamed:status.title];
 	cell.imageView.layer.cornerRadius = 22.5f;

@@ -6,6 +6,7 @@
 
 extern const struct SDEItemAttributes {
 	__unsafe_unretained NSString *additionalText;
+	__unsafe_unretained NSString *attributeText;
 	__unsafe_unretained NSString *header;
 	__unsafe_unretained NSString *modifier;
 	__unsafe_unretained NSString *name;
@@ -13,13 +14,16 @@ extern const struct SDEItemAttributes {
 } SDEItemAttributes;
 
 extern const struct SDEItemRelationships {
+	__unsafe_unretained NSString *attributes;
 	__unsafe_unretained NSString *characters;
 } SDEItemRelationships;
 
 extern const struct SDEItemFetchedProperties {
 } SDEItemFetchedProperties;
 
+@class SDEAttribute;
 @class SDECharacter;
+
 
 
 
@@ -45,6 +49,16 @@ extern const struct SDEItemFetchedProperties {
 
 
 //- (BOOL)validateAdditionalText:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSString* attributeText;
+
+
+
+//- (BOOL)validateAttributeText:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -94,6 +108,13 @@ extern const struct SDEItemFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSSet *attributes;
+
+- (NSMutableSet*)attributesSet;
+
+
+
+
 @property (nonatomic, strong) NSSet *characters;
 
 - (NSMutableSet*)charactersSet;
@@ -105,6 +126,11 @@ extern const struct SDEItemFetchedProperties {
 @end
 
 @interface _SDEItem (CoreDataGeneratedAccessors)
+
+- (void)addAttributes:(NSSet*)value_;
+- (void)removeAttributes:(NSSet*)value_;
+- (void)addAttributesObject:(SDEAttribute*)value_;
+- (void)removeAttributesObject:(SDEAttribute*)value_;
 
 - (void)addCharacters:(NSSet*)value_;
 - (void)removeCharacters:(NSSet*)value_;
@@ -118,6 +144,12 @@ extern const struct SDEItemFetchedProperties {
 
 - (NSString*)primitiveAdditionalText;
 - (void)setPrimitiveAdditionalText:(NSString*)value;
+
+
+
+
+- (NSString*)primitiveAttributeText;
+- (void)setPrimitiveAttributeText:(NSString*)value;
 
 
 
@@ -147,6 +179,11 @@ extern const struct SDEItemFetchedProperties {
 - (void)setPrimitiveTypeValue:(int32_t)value_;
 
 
+
+
+
+- (NSMutableSet*)primitiveAttributes;
+- (void)setPrimitiveAttributes:(NSMutableSet*)value;
 
 
 

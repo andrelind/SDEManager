@@ -43,6 +43,7 @@
         <attribute name="type" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="actions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SDEAction" inverseName="attributes" inverseEntity="SDEAction" syncable="YES"/>
         <relationship name="dbCharacters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DBCharacter" inverseName="abilities" inverseEntity="DBCharacter" syncable="YES"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SDEItem" inverseName="attributes" inverseEntity="SDEItem" syncable="YES"/>
         <relationship name="sdeCharacters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SDECharacter" inverseName="abilities" inverseEntity="SDECharacter" syncable="YES"/>
         <relationship name="statusEffects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SDECharacter" inverseName="statusEffects" inverseEntity="SDECharacter" syncable="YES"/>
     </entity>
@@ -80,17 +81,19 @@
     </entity>
     <entity name="SDEItem" representedClassName="SDEItem" syncable="YES">
         <attribute name="additionalText" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="attributeText" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="header" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="modifier" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="attributes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SDEAttribute" inverseName="items" inverseEntity="SDEAttribute" syncable="YES"/>
         <relationship name="characters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SDECharacter" inverseName="items" inverseEntity="SDECharacter" syncable="YES"/>
     </entity>
     <elements>
         <element name="DBCharacter" positionX="223" positionY="-367" width="128" height="448"/>
         <element name="SDEAction" positionX="412" positionY="261" width="128" height="133"/>
-        <element name="SDEAttribute" positionX="153" positionY="140" width="128" height="148"/>
+        <element name="SDEAttribute" positionX="153" positionY="140" width="128" height="163"/>
         <element name="SDECharacter" positionX="-74" positionY="-64" width="128" height="493"/>
-        <element name="SDEItem" positionX="153" positionY="423" width="128" height="133"/>
+        <element name="SDEItem" positionX="160" positionY="401" width="128" height="163"/>
     </elements>
 </model>

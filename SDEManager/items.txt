@@ -1,9 +1,10 @@
+1;Rune of Test;ATT;{g}{+1};;I am testing!!!
 
 2;Rune of Rage;ATT;{w}{+1};;RAAAAARGH!
 2;Intimidating Axe;ATT;{b}{+1};Pacify;I wouldn't do that if I were you.
 2;Frozen Falchion;ATT;{b}{+1};Cold;Hypothermia, guaranteed!
 2;Serpent Sword;ATT;{b}{+1};Poison;The favored weapon of the unsavory.
-2;Rune of Strenght;ATT;{b}{+1};;Might makes right.
+2;Rune of Strength;ATT;{b}{+1};;Might makes right.
 
 3;Rune of Defence;ARM;{b}{+1};;Stop hitting me!
 3;Spiked Gauntlets;ATT;{b}{+1};Immune: X(Weak);They make me punch harder and longer!

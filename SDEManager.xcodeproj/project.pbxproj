@@ -52,6 +52,11 @@
 		1ACE3BA417C7425D00EEB5DC /* SDEItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE3BA317C7425D00EEB5DC /* SDEItem.m */; };
 		1ACE3BA717C7427400EEB5DC /* _SDEItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE3BA617C7427400EEB5DC /* _SDEItem.m */; };
 		1ACE3BAA17C742E800EEB5DC /* SDEItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE3BA917C742E800EEB5DC /* SDEItemView.m */; };
+		1ACE3BAD17CB727600EEB5DC /* SDEItemListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE3BAC17CB727600EEB5DC /* SDEItemListViewController.m */; };
+		1ACE3BAF17CB864800EEB5DC /* AlbertusMTItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1ACE3BAE17CB864800EEB5DC /* AlbertusMTItalic.ttf */; };
+		1ACE3BB217CE00D000EEB5DC /* SDEDiceStatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE3BB117CE00D000EEB5DC /* SDEDiceStatsViewController.m */; };
+		1ACE3BB517CE1B4E00EEB5DC /* SDEAreaAndControlEffectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE3BB417CE1B4E00EEB5DC /* SDEAreaAndControlEffectsViewController.m */; };
+		1ACE3BB817CE1EF500EEB5DC /* SDEAreaOrControlEffectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE3BB717CE1EF500EEB5DC /* SDEAreaOrControlEffectViewController.m */; };
 		1ADB607C17BE45700089DC05 /* MagicalImportFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ADB604417BE45700089DC05 /* MagicalImportFunctions.m */; };
 		1ADB607D17BE45700089DC05 /* NSAttributeDescription+MagicalDataImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ADB604617BE45700089DC05 /* NSAttributeDescription+MagicalDataImport.m */; };
 		1ADB607E17BE45700089DC05 /* NSEntityDescription+MagicalDataImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ADB604817BE45700089DC05 /* NSEntityDescription+MagicalDataImport.m */; };
@@ -167,6 +172,15 @@
 		1ACE3BA617C7427400EEB5DC /* _SDEItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _SDEItem.m; sourceTree = "<group>"; };
 		1ACE3BA817C742E800EEB5DC /* SDEItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDEItemView.h; sourceTree = "<group>"; };
 		1ACE3BA917C742E800EEB5DC /* SDEItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDEItemView.m; sourceTree = "<group>"; };
+		1ACE3BAB17CB727600EEB5DC /* SDEItemListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDEItemListViewController.h; sourceTree = "<group>"; };
+		1ACE3BAC17CB727600EEB5DC /* SDEItemListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDEItemListViewController.m; sourceTree = "<group>"; };
+		1ACE3BAE17CB864800EEB5DC /* AlbertusMTItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AlbertusMTItalic.ttf; path = ../../../../Library/Fonts/AlbertusMTItalic.ttf; sourceTree = "<group>"; };
+		1ACE3BB017CE00D000EEB5DC /* SDEDiceStatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDEDiceStatsViewController.h; sourceTree = "<group>"; };
+		1ACE3BB117CE00D000EEB5DC /* SDEDiceStatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDEDiceStatsViewController.m; sourceTree = "<group>"; };
+		1ACE3BB317CE1B4E00EEB5DC /* SDEAreaAndControlEffectsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDEAreaAndControlEffectsViewController.h; sourceTree = "<group>"; };
+		1ACE3BB417CE1B4E00EEB5DC /* SDEAreaAndControlEffectsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDEAreaAndControlEffectsViewController.m; sourceTree = "<group>"; };
+		1ACE3BB617CE1EF500EEB5DC /* SDEAreaOrControlEffectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDEAreaOrControlEffectViewController.h; sourceTree = "<group>"; };
+		1ACE3BB717CE1EF500EEB5DC /* SDEAreaOrControlEffectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDEAreaOrControlEffectViewController.m; sourceTree = "<group>"; };
 		1ADB604317BE45700089DC05 /* MagicalImportFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicalImportFunctions.h; sourceTree = "<group>"; };
 		1ADB604417BE45700089DC05 /* MagicalImportFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MagicalImportFunctions.m; sourceTree = "<group>"; };
 		1ADB604517BE45700089DC05 /* NSAttributeDescription+MagicalDataImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributeDescription+MagicalDataImport.h"; sourceTree = "<group>"; };
@@ -385,6 +399,7 @@
 			children = (
 				1A8F26AA17BB95B100825F75 /* Adelon-Bold.ttf */,
 				1A8F26AB17BB95B100825F75 /* albertus-mt.ttf */,
+				1ACE3BAE17CB864800EEB5DC /* AlbertusMTItalic.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -398,6 +413,14 @@
 				1ACB388717C3820C00965B37 /* SDEStatusEffectsViewController.m */,
 				1ACB388C17C39B2500965B37 /* SDEStatusEffectDetailView.h */,
 				1ACB388D17C39B2500965B37 /* SDEStatusEffectDetailView.m */,
+				1ACE3BAB17CB727600EEB5DC /* SDEItemListViewController.h */,
+				1ACE3BAC17CB727600EEB5DC /* SDEItemListViewController.m */,
+				1ACE3BB017CE00D000EEB5DC /* SDEDiceStatsViewController.h */,
+				1ACE3BB117CE00D000EEB5DC /* SDEDiceStatsViewController.m */,
+				1ACE3BB317CE1B4E00EEB5DC /* SDEAreaAndControlEffectsViewController.h */,
+				1ACE3BB417CE1B4E00EEB5DC /* SDEAreaAndControlEffectsViewController.m */,
+				1ACE3BB617CE1EF500EEB5DC /* SDEAreaOrControlEffectViewController.h */,
+				1ACE3BB717CE1EF500EEB5DC /* SDEAreaOrControlEffectViewController.m */,
 			);
 			name = Popovers;
 			sourceTree = "<group>";
@@ -630,6 +653,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A8F26AD17BB95B100825F75 /* albertus-mt.ttf in Resources */,
+				1ACE3BAF17CB864800EEB5DC /* AlbertusMTItalic.ttf in Resources */,
 				1A8F268017BB6B1800825F75 /* Main_iPad.storyboard in Resources */,
 				1A8E554017BE698600DBD792 /* heroes.txt in Resources */,
 				1A29337217BCF2D60041A615 /* SDECharacterBackCell.xib in Resources */,
@@ -670,9 +694,12 @@
 				1ADB608A17BE45700089DC05 /* NSManagedObjectContext+MagicalSaves.m in Sources */,
 				1ADB608E17BE45700089DC05 /* NSPersistentStoreCoordinator+MagicalRecord.m in Sources */,
 				1A8F26A317BB6B7300825F75 /* SDECollectionViewController.m in Sources */,
+				1ACE3BB517CE1B4E00EEB5DC /* SDEAreaAndControlEffectsViewController.m in Sources */,
+				1ACE3BB817CE1EF500EEB5DC /* SDEAreaOrControlEffectViewController.m in Sources */,
 				1ADB608B17BE45700089DC05 /* NSManagedObjectContext+MagicalThreading.m in Sources */,
 				1ADB608017BE45700089DC05 /* NSObject+MagicalDataImport.m in Sources */,
 				1ADB608817BE45700089DC05 /* NSManagedObjectContext+MagicalObserving.m in Sources */,
+				1ACE3BAD17CB727600EEB5DC /* SDEItemListViewController.m in Sources */,
 				1ADB609417BE45700089DC05 /* MagicalRecord+ShorthandSupport.m in Sources */,
 				1A6A2AD517BE584F00802544 /* _SDEStatusEffect.m in Sources */,
 				1ADB607D17BE45700089DC05 /* NSAttributeDescription+MagicalDataImport.m in Sources */,
@@ -695,6 +722,7 @@
 				1A8F26A617BB79F300825F75 /* SDECharacterCell.m in Sources */,
 				1ADB608917BE45700089DC05 /* NSManagedObjectContext+MagicalRecord.m in Sources */,
 				1A6A2AD917BE584F00802544 /* SDEStatusEffect.m in Sources */,
+				1ACE3BB217CE00D000EEB5DC /* SDEDiceStatsViewController.m in Sources */,
 				1A29336D17BBBD7B0041A615 /* SDEAttributeView.m in Sources */,
 				1ADB609317BE45700089DC05 /* MagicalRecord+Setup.m in Sources */,
 				1ADB607E17BE45700089DC05 /* NSEntityDescription+MagicalDataImport.m in Sources */,

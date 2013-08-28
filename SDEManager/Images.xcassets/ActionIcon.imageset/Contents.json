@@ -9,6 +9,15 @@
       "idiom" : "universal",
       "scale" : "2x",
       "filename" : "ActionIcon@2x.png"
+    },
+    {
+      "idiom" : "ipad",
+      "scale" : "1x",
+      "filename" : "ActionIcon~ipad.png"
+    },
+    {
+      "idiom" : "ipad",
+      "scale" : "2x"
     }
   ],
   "info" : {

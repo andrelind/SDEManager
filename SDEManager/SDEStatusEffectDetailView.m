@@ -43,7 +43,7 @@
 	CGFloat h = [self.attributedString boundingRectWithSize:CGSizeMake(self.statusText.frame.size.width - 10, CGFLOAT_MAX) options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading) context:nil].size.height;
 	self.statusText.frame = CGRectMake(self.statusText.frame.origin.x, self.statusText.frame.origin.y, self.statusText.frame.size.width, h);
 	h += self.deleteButton.frame.size.height;
-	return h + 30;
+	return h + 45;
 }
 
 - (IBAction)removeStatus:(id)sender {

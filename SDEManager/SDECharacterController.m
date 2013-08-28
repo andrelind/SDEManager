@@ -5,6 +5,7 @@
 #import "SDECharacterBackCell.h"
 #import "SDEStatusEffectDetailView.h"
 #import "SDEItemView.h"
+#import "SDEItemListViewController.h"
 
 #import "SDECharacter.h"
 #import "DBCharacter.h"
@@ -46,6 +47,11 @@
 	self.splitViewController.delegate = self;
 	self.splitViewController.presentsWithGesture = YES;
 	
+	self.redItemView.alpha = 0;
+	self.yellowItemView.alpha = 0;
+	self.greenItemView.alpha = 0;
+	self.blueItemView.alpha = 0;
+	
 	if(UIInterfaceOrientationIsLandscape(self.interfaceOrientation)){
 		self.characterListButton.alpha = 0.0;
 		self.characterListButton.enabled = NO;
@@ -62,7 +68,7 @@
 }
 
 - (void)setCharacter:(SDECharacter *)character {
-	_character = character;
+	_character = [character MR_inThreadContext];
 	
 	if(self.isFlipped){
 		[self flipView:nil];
@@ -75,21 +81,7 @@
 	}
 	
 	// Remove old status effects
-	for(UIAttachmentBehavior* spring in self.animator.behaviors){
-		if([spring isKindOfClass:UIAttachmentBehavior.class]){
-			[self.animator removeBehavior:spring];
-			[self.collider removeItem:spring.items[0]];
-			
-			// Animate the item to 0 height/width
-			[UIView animateWithDuration:0.7 animations:^{
-				CGRect frame = ((SDEStatusEffectView*)spring.items[0]).frame;
-				((SDEStatusEffectView*)spring.items[0]).frame = CGRectMake(frame.origin.x + frame.size.width*.5, frame.origin.y + frame.size.height*.5, 0, 0);
-			} completion:^(BOOL finished) {
-				// Remove the item
-				[spring.items[0] removeFromSuperview];
-			}];
-		}
-	}
+	[self removeAllTokens];
 	
 	[self.characterView prepareForReuse];
 	
@@ -132,26 +124,20 @@
 	for (SDEAction* a in character.actions)
 		[self.characterView addAttributeIcon:a.token title:a.title text:a.text];
 	
-	NSInteger delay = 0;
-	for(SDEAttribute* statusEffect in character.statusEffects){
-		double delayInSeconds = delay * 0.3f;
-		delay++;
-		dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-		dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-			[self createStatusEffect:statusEffect atPoint:CGPointMake(45, delay * 45)];
-		});
-	}
+	// Tokens are always loaded from original character
+	[self createTokensForCharacter:_character];
 	
-	self.redItemView.hidden = YES;
-	self.yellowItemView.hidden = YES;
-	self.greenItemView.hidden = YES;
-	self.blueItemView.hidden = YES;
+	// Items are loaded from the original character always, never the shapeshift
+	[self setupItemWithType:SDEItemTypeRed];
+	[self setupItemWithType:SDEItemTypeYellow];
+	[self setupItemWithType:SDEItemTypeGreen];
+	[self setupItemWithType:SDEItemTypeBlue];
 	
-	if(self.character.shapeshift && self.toolbarItems.count < 5){
+	if(self.character.shapeshift && self.toolbarItems.count < 6){
 		NSMutableArray* items = [NSMutableArray arrayWithArray:self.toolbarItems];
-		[items insertObject:self.shapeshiftButton atIndex:2];
+		[items insertObject:self.shapeshiftButton atIndex:4];
 		self.toolbarItems = items;
-	} else if(!self.character.shapeshift && self.toolbarItems.count >= 5) {
+	} else if(!self.character.shapeshift && self.toolbarItems.count >= 6) {
 		NSMutableArray* items = [NSMutableArray arrayWithArray:self.toolbarItems];
 		[items removeObject:self.shapeshiftButton];
 		self.toolbarItems = items;
@@ -165,6 +151,8 @@
 		self.characterListButton.enabled = YES;
 	}];
     self.masterPopoverController = popoverController;
+	[self removeAllTokens];
+	[self createTokensForCharacter:self.character];
 }
 
 - (void)splitViewController:(UISplitViewController *)splitController willShowViewController:(UIViewController *)viewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem {
@@ -175,6 +163,39 @@
 		self.characterListButton.enabled = NO;
 	}];
     self.masterPopoverController = nil;
+	[self removeAllTokens];
+	[self createTokensForCharacter:self.character];
+}
+
+- (void)createTokensForCharacter:(SDECharacter *)character {
+	NSInteger delay = 0;
+	for(SDEAttribute* statusEffect in character.statusEffects){
+		double delayInSeconds = delay * 0.3f;
+		delay++;
+		dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+		dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+			[self createStatusEffect:statusEffect atPoint:CGPointMake(45, delay * 45)];
+		});
+	}
+}
+
+- (void)removeAllTokens {
+	// Remove old status effects
+	for(UIAttachmentBehavior* spring in self.animator.behaviors){
+		if([spring isKindOfClass:UIAttachmentBehavior.class]){
+			[self.animator removeBehavior:spring];
+			[self.collider removeItem:spring.items[0]];
+			
+			// Animate the item to 0 height/width
+			[UIView animateWithDuration:0.7 animations:^{
+				CGRect frame = ((SDEStatusEffectView*)spring.items[0]).frame;
+				((SDEStatusEffectView*)spring.items[0]).frame = CGRectMake(frame.origin.x + frame.size.width*.5, frame.origin.y + frame.size.height*.5, 0, 0);
+			} completion:^(BOOL finished) {
+				// Remove the item
+				[spring.items[0] removeFromSuperview];
+			}];
+		}
+	}
 }
 
 #pragma mark - Actions
@@ -186,7 +207,7 @@
 		wound.typeValue = SDEAttributeTypeWound;
 		
 		dispatch_async(dispatch_get_main_queue(), ^{
-			[self createStatusEffect:[wound MR_inThreadContext] atPoint:CGPointMake(self.view.frame.size.width * 0.75, self.view.frame.size.height - 65)];
+			[self createStatusEffect:[wound MR_inThreadContext] atPoint:CGPointMake(55, 45)];
 		});
 		[[[self.character MR_inContext:localContext] statusEffectsSet] addObject:wound];
 	}];
@@ -205,12 +226,18 @@
 	if(!self.isFlipped){
 		[self.flippedView reset];
 		
-		self.flippedView.name.text = self.character.name.uppercaseString;
-		self.flippedView.type.text = self.character.type.uppercaseString;
+		SDECharacter* c = self.character.isShapeshiftedValue ? self.character.shapeshift : self.character;
+		c = [c MR_inThreadContext];
 		
-		NSMutableSet* attributes = [NSMutableSet setWithSet:self.character.abilities];
-		for (SDEAction* a in self.character.actions)
+		self.flippedView.name.text = c.name.uppercaseString;
+		self.flippedView.type.text = c.type.uppercaseString;
+		
+		NSMutableSet* attributes = [NSMutableSet setWithSet:c.abilities];
+		for (SDEAction* a in c.actions)
 			[attributes addObjectsFromArray:a.attributes.allObjects];
+		
+		for(SDEItem* i in c.items)
+			[attributes addObjectsFromArray:i.attributes.allObjects];
 		
 		for(SDEAttribute* a in [attributes sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES]]])
 			[self.flippedView addTitle:a.title text:a.longDescription];
@@ -261,10 +288,10 @@
 	else
 		spring = [[UIAttachmentBehavior alloc] initWithItem:effectView attachedToAnchor:CGPointMake(self.view.frame.size.width - effectView.frame.size.width*.5 - 10, self.view.frame.size.height - 75 - statusCount*65)];
 	spring.length = 0;
-	spring.damping = 0.6;
+	spring.damping = 0.7;
 	spring.frequency = 1.0;
 	[self.animator addBehavior:spring];
-/*
+
 	// Attach a collider to the item
 	if(!self.collider){
 		self.collider = [[UICollisionBehavior alloc] initWithItems:@[effectView]];
@@ -272,10 +299,17 @@
 		[self.animator addBehavior:self.collider];
 	} else
 		[self.collider addItem:effectView];
-*/
+	
+	UIDynamicItemBehavior* properties = [[UIDynamicItemBehavior alloc] initWithItems:@[effectView]];
+	properties.angularResistance = .5;
+	properties.elasticity = 0;
+	
+	[self.animator addBehavior:properties];
+
 	[self.collider removeAllBoundaries];
 	for(SDEStatusEffectView* v in self.collider.items)
 		[self.collider addBoundaryWithIdentifier:v.statusEffect.title forPath:[UIBezierPath bezierPathWithRoundedRect:v.bounds cornerRadius:v.bounds.size.width*.5]];
+
 }
 
 - (void)setupItemWithType:(SDEItemType)itemType {
@@ -294,13 +328,86 @@
 	} else if(itemType == SDEItemTypeBlue){
 		button = self.blueButton;
 		itemView = self.blueItemView;
-	}	
+	}
 	
 	if(item){
+		itemView.item = item;
+		button.hidden = NO;
+		itemView.hidden = NO;
 		
+		[UIView animateWithDuration:0.7 animations:^{
+			button.alpha = 0;
+			itemView.alpha = 1;
+		} completion:^(BOOL finished) {
+			button.hidden = YES;
+			itemView.hidden = NO;
+		}];
+		[itemView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapItem:)]];
 	} else {
 		// Remove card if there is one visible
+		button.hidden = NO;
+		itemView.hidden = NO;
+		
+		[UIView animateWithDuration:0.7 animations:^{
+			button.alpha = 1;
+			itemView.alpha = 0;
+		} completion:^(BOOL finished) {
+			button.hidden = NO;
+			itemView.hidden = YES;
+		}];
+		
+		UITapGestureRecognizer* tap = nil;
+		for(UITapGestureRecognizer* t in itemView.gestureRecognizers){
+			if([t isKindOfClass:UITapGestureRecognizer.class]){tap = t;}
+		}
+		if(tap) [itemView removeGestureRecognizer:tap];
 	}
+}
+
+- (IBAction)showRedItems:(id)sender {
+	[self showItemsWithType:SDEItemTypeRed fromButton:sender];
+}
+
+- (IBAction)showYellowItems:(id)sender {
+	[self showItemsWithType:SDEItemTypeYellow fromButton:sender];
+}
+
+- (IBAction)showGreenItems:(id)sender {
+	[self showItemsWithType:SDEItemTypeGreen fromButton:sender];
+}
+
+- (IBAction)showBlueItems:(id)sender {
+	[self showItemsWithType:SDEItemTypeBlue fromButton:sender];
+}
+
+- (void)didTapItem:(UITapGestureRecognizer *)tap {
+	SDEItem* item = ((SDEItemView*)tap.view).item;
+	CGPoint p = [tap locationInView:self.view];
+	
+	UIActionSheet* sheet = [[UIActionSheet alloc] initWithTitle:item.name delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles:nil];
+	sheet.tag = item.typeValue;
+	[sheet showFromRect:CGRectMake(p.x, p.y, 1, 1) inView:self.view animated:YES];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+	if(buttonIndex) return;
+	
+	SDEItem* item = [self.character.items filteredSetUsingPredicate:[NSPredicate predicateWithFormat:@"type == %i", actionSheet.tag]].anyObject;
+	[MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
+		[[self.character MR_inContext:localContext] removeItemsObject:[item MR_inContext:localContext]];
+	}];
+	
+	_character = [self.character MR_inThreadContext];
+	[self setupItemWithType:item.typeValue];
+}
+
+- (void)showItemsWithType:(SDEItemType)type fromButton:(UIButton *)button {
+	SDEItemListViewController* nav = [self.storyboard instantiateViewControllerWithIdentifier:@"SDEItemList"];
+	nav.itemType = type;
+	nav.itemControllerDelegate	= self;
+	
+	self.masterPopoverController = [[UIPopoverController alloc] initWithContentViewController:nav];
+	[self.masterPopoverController presentPopoverFromRect:button.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 #pragma mark - Segue
@@ -330,13 +437,15 @@
 #pragma mark - SDEStatusEffectViewDelegate
 
 - (void)statusEffectViewWasTapped:(SDEStatusEffectView *)statusEffectView {
-	if(statusEffectView.statusEffect.typeValue == SDEAttributeTypeWound){
+	SDEAttribute* statusEffect = [statusEffectView.statusEffect MR_inThreadContext];
+	
+	if(statusEffect.typeValue == SDEAttributeTypeWound){
 		[self statusEffectDetailView:nil didPressRemoveStatus:statusEffectView.statusEffect];
 		return;
 	}
 	
 	SDEStatusEffectDetailView* view = [self.storyboard instantiateViewControllerWithIdentifier:@"SDEStatusEffectDetailView"];
-	view.statusEffect = statusEffectView.statusEffect;
+	view.statusEffect = statusEffect;
 	view.statusEffectDelegate = self;
 	
 	self.masterPopoverController = [[UIPopoverController alloc] initWithContentViewController:view];
@@ -388,6 +497,20 @@
 			}
 		}
 	}
+	
+	[self.masterPopoverController dismissPopoverAnimated:YES];
+	self.masterPopoverController = nil;
+}
+
+#pragma mark - SDEItemListViewControllerDelegate
+
+- (void)itemListController:(SDEItemListViewController *)controller didSelectItem:(SDEItem *)item {
+	[MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
+		[[self.character MR_inContext:localContext] addItemsObject:[item MR_inContext:localContext]];
+	}];
+	
+	_character = [self.character MR_inThreadContext];
+	[self setupItemWithType:item.typeValue];
 	
 	[self.masterPopoverController dismissPopoverAnimated:YES];
 	self.masterPopoverController = nil;

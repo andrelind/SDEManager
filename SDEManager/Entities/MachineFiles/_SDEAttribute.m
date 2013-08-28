@@ -12,6 +12,7 @@ const struct SDEAttributeAttributes SDEAttributeAttributes = {
 const struct SDEAttributeRelationships SDEAttributeRelationships = {
 	.actions = @"actions",
 	.dbCharacters = @"dbCharacters",
+	.items = @"items",
 	.sdeCharacters = @"sdeCharacters",
 	.statusEffects = @"statusEffects",
 };
@@ -119,6 +120,19 @@ const struct SDEAttributeFetchedProperties SDEAttributeFetchedProperties = {
 	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"dbCharacters"];
   
 	[self didAccessValueForKey:@"dbCharacters"];
+	return result;
+}
+	
+
+@dynamic items;
+
+	
+- (NSMutableSet*)itemsSet {
+	[self willAccessValueForKey:@"items"];
+  
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"items"];
+  
+	[self didAccessValueForKey:@"items"];
 	return result;
 }
 	
