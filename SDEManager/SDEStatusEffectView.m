@@ -27,7 +27,7 @@
 - (void)setStatusEffect:(SDEAttribute *)statusEffect {
 	_statusEffect = statusEffect;
 	
-	self.image = [UIImage imageNamed:statusEffect.title];
+	self.image = [UIImage imageNamed:[statusEffect.title stringByReplacingOccurrencesOfString:@": X" withString:@""]];
 	self.layer.cornerRadius = self.image.size.width * .5f;
 }
 

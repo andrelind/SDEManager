@@ -22,6 +22,7 @@
 		self.diceLabel.font = [UIFont fontWithName:@"Adelon-Bold" size:11];
 	self.diceLabel.textAlignment = NSTextAlignmentCenter;
 	self.icons = [NSMutableArray array];
+	self.intendent = YES;
 }
 
 - (void)reset {
@@ -39,12 +40,6 @@
 	if(self.storedAttributeString != nil)
 		title = [@"\n" stringByAppendingString:title];
 	
-	NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
-	style.firstLineHeadIndent = 22;
-	style.headIndent = 22;
-	style.maximumLineHeight = 16;
-	style.paragraphSpacing = 7;
-	
 	NSMutableAttributedString* attributedString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@: %@", title, text]];
 	if(isIpad){
 		[attributedString setAttributes:@{NSFontAttributeName : [UIFont fontWithName:@"Arial-BoldMT" size:11]} range:NSMakeRange(0, title.length+1)];
@@ -54,31 +49,14 @@
 		[attributedString setAttributes:@{NSFontAttributeName : [UIFont fontWithName:@"ArialMT" size:8.5]} range:NSMakeRange(title.length+1, text.length+1)];
 	}
 	
-	if([attributedString.string rangeOfString:@"{b}"].location != NSNotFound)
-		[self findInString:attributedString token:@"{b}" imageName:@"BlueDie" imageOffset:CGPointMake(1, -5.5f) offset:CGPointMake(.5f, 0)];
-	if([attributedString.string rangeOfString:@"{r}"].location != NSNotFound)
-		[self findInString:attributedString token:@"{r}" imageName:@"RedDie" imageOffset:CGPointMake(1, -5.5f) offset:CGPointMake(.5f, 0)];
-	if([attributedString.string rangeOfString:@"{g}"].location != NSNotFound)
-		[self findInString:attributedString token:@"{g}" imageName:@"GreenDie" imageOffset:CGPointMake(1, -5.5f) offset:CGPointMake(.5f, 0)];
-	if([attributedString.string rangeOfString:@"{w}"].location != NSNotFound)
-		[self findInString:attributedString token:@"{w}" imageName:@"WhiteDie" imageOffset:CGPointMake(1, -5.5f) offset:CGPointMake(.5f, 0)];
-	if([attributedString.string rangeOfString:@"{a}"].location != NSNotFound)
-		[self findInString:attributedString token:@"{a}" imageName:@"ActionIcon" imageOffset:CGPointMake(7, -2.5f) offset:CGPointMake(.5f, -1)];
-	
-	if([attributedString.string rangeOfString:@"{ba}"].location != NSNotFound)
-		[self findInString:attributedString token:@"{ba}" imageName:@"BlueActionIcon" imageOffset:CGPointMake(7, -2.5f) offset:CGPointMake(.5f, -1)];
-	if([attributedString.string rangeOfString:@"{ra}"].location != NSNotFound)
-		[self findInString:attributedString token:@"{ra}" imageName:@"RedActionIcon" imageOffset:CGPointMake(7, -2.5f) offset:CGPointMake(.5f, -1)];
-	
-	[attributedString addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, attributedString.length)];
-		
 	if(self.storedAttributeString != nil)
 	   [self.storedAttributeString appendAttributedString:attributedString];
 	else
 		self.storedAttributeString = attributedString;
 	
 	self.attributedText = self.storedAttributeString;
-	
+		
+	// Handle the first image separately, did not work so good as an NSTextAttachment
 	dispatch_async(dispatch_get_main_queue(), ^{
 		CGRect r = [self frameOfTextRange:[self.storedAttributeString.string rangeOfString:[[title stringByReplacingOccurrencesOfString:@"\n" withString:@""] stringByAppendingString:@":"]]];
 		

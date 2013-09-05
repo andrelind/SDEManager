@@ -7,6 +7,7 @@
 extern const struct SDEItemAttributes {
 	__unsafe_unretained NSString *additionalText;
 	__unsafe_unretained NSString *attributeText;
+	__unsafe_unretained NSString *boss;
 	__unsafe_unretained NSString *header;
 	__unsafe_unretained NSString *modifier;
 	__unsafe_unretained NSString *name;
@@ -14,6 +15,7 @@ extern const struct SDEItemAttributes {
 } SDEItemAttributes;
 
 extern const struct SDEItemRelationships {
+	__unsafe_unretained NSString *actions;
 	__unsafe_unretained NSString *attributes;
 	__unsafe_unretained NSString *characters;
 } SDEItemRelationships;
@@ -21,8 +23,10 @@ extern const struct SDEItemRelationships {
 extern const struct SDEItemFetchedProperties {
 } SDEItemFetchedProperties;
 
+@class SDEAction;
 @class SDEAttribute;
 @class SDECharacter;
+
 
 
 
@@ -59,6 +63,20 @@ extern const struct SDEItemFetchedProperties {
 
 
 //- (BOOL)validateAttributeText:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSNumber* boss;
+
+
+
+@property int32_t bossValue;
+- (int32_t)bossValue;
+- (void)setBossValue:(int32_t)value_;
+
+//- (BOOL)validateBoss:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -108,6 +126,13 @@ extern const struct SDEItemFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSSet *actions;
+
+- (NSMutableSet*)actionsSet;
+
+
+
+
 @property (nonatomic, strong) NSSet *attributes;
 
 - (NSMutableSet*)attributesSet;
@@ -126,6 +151,11 @@ extern const struct SDEItemFetchedProperties {
 @end
 
 @interface _SDEItem (CoreDataGeneratedAccessors)
+
+- (void)addActions:(NSSet*)value_;
+- (void)removeActions:(NSSet*)value_;
+- (void)addActionsObject:(SDEAction*)value_;
+- (void)removeActionsObject:(SDEAction*)value_;
 
 - (void)addAttributes:(NSSet*)value_;
 - (void)removeAttributes:(NSSet*)value_;
@@ -150,6 +180,15 @@ extern const struct SDEItemFetchedProperties {
 
 - (NSString*)primitiveAttributeText;
 - (void)setPrimitiveAttributeText:(NSString*)value;
+
+
+
+
+- (NSNumber*)primitiveBoss;
+- (void)setPrimitiveBoss:(NSNumber*)value;
+
+- (int32_t)primitiveBossValue;
+- (void)setPrimitiveBossValue:(int32_t)value_;
 
 
 
@@ -179,6 +218,11 @@ extern const struct SDEItemFetchedProperties {
 - (void)setPrimitiveTypeValue:(int32_t)value_;
 
 
+
+
+
+- (NSMutableSet*)primitiveActions;
+- (void)setPrimitiveActions:(NSMutableSet*)value;
 
 
 

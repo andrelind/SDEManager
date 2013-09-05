@@ -1,21 +1,81 @@
-1;Rune of Test;ATT;{g}{+1};;I am testing!!!
+-- type, boss, name, header, modifier, attributes, actions, additional text --
 
-2;Rune of Rage;ATT;{w}{+1};;RAAAAARGH!
-2;Intimidating Axe;ATT;{b}{+1};Pacify;I wouldn't do that if I were you.
-2;Frozen Falchion;ATT;{b}{+1};Cold;Hypothermia, guaranteed!
-2;Serpent Sword;ATT;{b}{+1};Poison;The favored weapon of the unsavory.
-2;Rune of Strength;ATT;{b}{+1};;Might makes right.
+-- Base Game --
+1;0;Bejeweled Shield;ARM;{r}{+1};Backlash;;It burns us!
+1;0;Cloak of Shadows;DEX;{r}{+1};Stealth;;Uh, did you see something just move?
+1;0;Guttering Candle;WILL;{r}{+1};;Flicker; Behind you!
+1;0;Hero's Regalia;ATT, ARM;{r}{+1}{r}{+1};;;Clothing makes the hero.
+1;0;Pegasus Feather;DEX;{r}{+1};Fly;;I can fly!
+1;0;Priest's Vestments;WILL;{r}{+1};;Soothe;Rub some dirt on it
+1;0;Rune of Mithril;ARM;{g}{+1};;;There is no mere metal.
+1;0;Rune of the Archmage;WILL;{g}{+1};;;The world is mine to command
+1;0;Rune of the Titans;ATT;{g}{+1};;;None shall stand before us.
+1;0;Rune of Quicksilver;DEX;{g}{+1};;;Dodge, Dip, Duck, Dive
+1;0;Runic Cloak;ARM;{r}{+1};Immune: X(Status Effects);;;No magic shall unbind these wards.
+1;0;Sword of Alacrity;ATT;{r}{+1}{a}{+1};;;Parry, Parry, Thrust, Thrust!
 
-3;Rune of Defence;ARM;{b}{+1};;Stop hitting me!
-3;Spiked Gauntlets;ATT;{b}{+1};Immune: X(Weak);They make me punch harder and longer!
-3;Sorcerer's Cowl;WILL;{b}{+1};Immune: X(Stun);Lead-lined for maximum lightning protection.
-3;Rune of Better Defence;ARM;{r}{+1};;Nothin protects like Better Defence.
-3;Wizard's Robes;WILL;{b}{+1};Immune: X(Bind);I think not.
-3;Elfin Boots;DEX;{b}{+1};Immune: X(Slow);Nothing slows me down when I wear my dancin' shoes!
+2;0;Rune of Rage;ATT;{w}{+1};;;RAAAAARGH!
+2;0;Intimidating Axe;ATT;{b}{+1};Pacify;;I wouldn't do that if I were you.
+2;0;Frozen Falchion;ATT;{b}{+1};Cold;;Hypothermia, guaranteed!
+2;0;Serpent Sword;ATT;{b}{+1};Poison;;The favored weapon of the unsavory.
+2;0;Rune of Strength;ATT;{b}{+1};;;Might makes right.
+2;0;Sapper's Axe;ATT;{b}{+1};Weak;;Your strength is now mine.
+2;0;Rune of the Ogre;ATT;{r}{+1};;;Bigger and uglier.
+2;0;Wizarding Wand;WILL;{b}{+1};Bind;;I would prefer if you didn't do that.
+2;0;Sneaky Stiletto;DEX;{b}{+1};Slow;;If we move really, really slowly maybe they won't see us.
+2;0;Blazing Blade;ATT;{b}{+1};Fire;;Hot! Hot! Hot!
+2;0;Sorcerer's Stave;WILL;{b}{+1};;Stun;Zzzot!
+2;0;Horned Mace;ARM;{b}{+1};Knockdown;;Like being hit by a charging bull.
+2;0;Glass Hammer;ARM;{b}{+1};Fragile;;I think I broke it boss.
+2;0;Caltrop Dagger;DEX;{b}{+1};Immobile;;Ouch!
 
-4;Rune of the Panther;DEX;{r}{+1};;Silence and grace.
-4;Rune of the Lynx;DEX;{w}{+1};;Quick and sure.
-4;Rune of the Sage;WILL;{w}{+1};;There is no spoon.
-4;Rune of Meditation;WILL;{r}{+1};;I think therefore I am.
-4;Rune of the Stray;DEX;{b}{+1};;Nice kitty.
-2;Rune of Haste;Action;{a}{+1};;I'm the best around.
+3;0;Rune of Defence;ARM;{b}{+1};;;Stop hitting me!
+3;0;Spiked Gauntlets;ATT;{b}{+1};Immune: X(Weak);;They make me punch harder and longer!
+3;0;Sorcerer's Cowl;WILL;{b}{+1};Immune: X(Stun);;Lead-lined for maximum lightning protection.
+3;0;Rune of Better Defence;ARM;{r}{+1};;;Nothin protects like Better Defence.
+3;0;Rune of Super Defence;ARM;{w}{+1};;;When I need armor I get Super!
+3;0;Wizard's Robes;WILL;{b}{+1};Immune: X(Bind);;I think not.
+3;0;Elfin Boots;DEX;{b}{+1};Immune: X(Slow);;Nothing slows me down when I wear my dancin' shoes!
+3;0;Drunken Dwarf Plate;ARM;{b}{+1};Immune: X(Knockdown);;Dwarf tested, dwarf approved.
+3;0;Molten Shield;ATT;{b}{+1};Immune: X(Fire);;It's really hot, so I don't have to be.
+3;0;Fur-Lined Gauntlets;ATT;{b}{+1};Immune: X(Cold);;Mmmmm soft,luxurious, and warm.
+3;0;Berserker's Helm;ATT;{b}{+1};Immune: X(Pacify);;ANGRY!
+3;0;Coward's Boots;DEX;{b}{+1};Immune: X(Immobile);;Those who run away,live to fight another day.
+3;0;Diamond Shield;ATT;{b}{+1};Immune: X(Fragile);;Nothing harder.
+3;0;Serpent Plate;ARM;{b}{+1};Immune: X(Poison);;Fear not the coiled serpent.
+
+4;0;Rune of the Panther;DEX;{r}{+1};;;Silence and grace.
+4;0;Rune of the Lynx;DEX;{w}{+1};;;Quick and sure.
+4;0;Rune of the Sage;WILL;{w}{+1};;;There is no spoon.
+4;0;Rune of Meditation;WILL;{r}{+1};;;I think therefore I am.
+4;0;Rune of the Stray;DEX;{b}{+1};;;Nice kitty.
+4;0;Rune of Haste;Action;{a}{+1};;;I'm the best around.
+4;0;Silver Torq;ARM;{b}{+1};Immune: X(Choke);;This round is on me.
+4;0;Rune of Focus;WILL;{b}{+1};;;I think I can. I think I can.
+4;0;Resurrection Charm;;;;Resurrect;It lives!
+4;0;Corpse Hand;ATT;{b}{+1};Choke;;Ahh... Ahh... rouragraallal... arougraaluraaa
+4;0;Rune of Health;;{h}{+1};;;Nothing is going to keep me down.
+
+-- Starfire --
+1;1;Gem of Greed;;;;Gem of Greed;Mine, it's all mine!
+1;1;Dragon Bow;DEX;{g}{+1};;Solar Flare;Get down!
+1;1;Burning Horn;ATT;{g}{+1};;Dragon's Breath;You're blowing in the wrong end.
+1;1;Petrified Dragon Heart;;{h}{+2};Healer;;Let my vitality become your own.
+1;1;Dragon Lance;;;;Coupe de Grace;Goddess, let my aim be true
+1;1;Wyrm Scale;ARM;{g}{+1};;Fire Storm;Woooosh!
+
+-- Roxor --
+1;2;Fool's Gold;;;;Fool's Gold;Better lucky than smart, I always say.
+1;2;Rumble & Ruckus;ATT;{r}{+1};Knockdown;Tremor Strike;Few can stand when Rumble & Ruckus shake the ground.
+1;2;Roxor's Bane;ATT, ARM;{r}{+1}{r}{+1};Cold;;Lets get frosty!
+1;2;Wobbling Stalactite;DEX;{g}{+1};;Wibble;Wibble-Wobble, Wibble-Wobble, Watch Out!
+1;2;Fire Gel Goo;WILL;{g}{+1};Immune: X(Fire);Splash;Oh gross!
+1;2;Grimy Grim Granite Greaves;ARM;{r}{+1};Immune: X(Knockdown), Immune: X(Slow), Immune: X(Immobile);;Three times strong!
+
+-- Von Drakk --
+1;3;Mournful Vial;WILL;{r}{+1};Healer;Just a Drop;Mmmm, raspberry!
+1;3;Withered Ring;WILL;{r}{+1};;Second Chance;Second chances are seldom earned.
+1;3;Possessed Cloak;ATT;{b}{+2};;Confuse;...who are you?
+1;3;Cursed Talisman;ARM;{g}{+1};;Cursed Talisman;You will pay for my protection.
+1;3;Bewitched Wand;WILL;{g}{+1};Cold, Vulnerable: X(Fire);;Chilled to the bone
+1;3;Bat Winged Key;DEX;{r}{+1};Luck, Fly;;Flap, Flap, Flap, Flap, Flap, Flap

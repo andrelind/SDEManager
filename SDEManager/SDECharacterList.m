@@ -8,26 +8,11 @@
 
 @implementation SDECharacterList
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 	
 	self.characterController = [[self.splitViewController.viewControllers lastObject] viewControllers][0];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+	
 	[NSNotificationCenter.defaultCenter addObserverForName:@"CharacterChangeNotification" object:nil queue:nil usingBlock:^(NSNotification *note) {
 		[self.tableView reloadData];
 		
@@ -94,6 +79,17 @@
 			[tableView deleteSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
 		else
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+		
+		if([self tableView:self.tableView numberOfRowsInSection:indexPath.section] == 0)
+			self.characterController.character = nil;
+		else if(!self.tableView.indexPathForSelectedRow){
+			double delayInSeconds = .33;
+			dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+			dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+				[self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionTop];
+				[self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+			});
+		}
     }
 }
 

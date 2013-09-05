@@ -47,6 +47,11 @@ Hobbled Hands;{ra}{1};{b}{+1} WILL, Weak
 Broken Bones;{ra}{1};{b}{+1} WILL, Fragile
 Wizard Wings;{p}{};{b}{+1} WILL, Fly
 
+-- Nyan Nyan --
+Teeth & Fur;{ra}{2};{r}{+1} ATT, Knockdown, Pounce
+Purr;{ba}{1};Wave X(1), Compel X(2)
+Catnip Bomb;{p}{1};{ba}{} Range X(6), Burst X(2), Pacify
+
 -- Paladin --
 Iron Halo;{ba}{1};Augment, Aura X(3), {b}{+1} ARM;
 Smite;{ra}{2};{r}{+1} ATT, Knockdown, Fire
@@ -84,3 +89,28 @@ Holy Oil;{p}{1};{ra}{} Range X(4), Burst X(1), Holy, Fire
 -- Von Wilder --
 Shag Fest;{ra}{1};Sweep X(1), {r}{+1} ATT, Dangerous, Lycanthropy
 Shapeshift;{ba}{1};Von Wilding
+
+
+-- Items --
+Flicker;{ba}{1};Teleport
+Soothe;{ba}{1};Augment, Range X(6), Heal X(1)
+Resurrect;;At the beginning of the round Resurrect one model and then remove this card from play. If the Consul draws this card shuffle it back into the Loot Deck and draw again
+
+-- Starfire --
+Gem of Greed;;A Hero with the Gem of Greed may equip two loot cards on every equipment slot except relics.
+Solar Flare;{ra}{2};Missile X(8), Burst X(1)
+Dragon's Breath;{ra}{2};Spray X(5), Fire, Dangerous
+Coupe de Grace;{ra}{3};When Coupe de Grace inflicts a wound it instead inflicts one wound for every star rolled by the attacker. After the attack is resolved remove Dragon Lance from play regardless of if damage was inflicted
+Fire Storm;{ba}{1};Wave X(2), Fire, Dangerous
+
+-- Roxor --
+Fool's Gold;;At the end of each of this models activations draw one loot card. Anytime this model makes a roll using it's WILL attribute discard the highest result rolled.
+Tremor Strike;{ra}{2};Wave X(1)
+Wibble;{ra}{1};Missile X(8), Stun
+Splash;{ra}{2};Magic X(6), Burst X(1), Fire
+
+-- Von Drakk --
+Just a Drop;{ba}{1}; Augment, Immune: X(Status Effects)
+Second Chance;{ba}{1};Resurrect one destroyed Hero. One use only - Discard Withered Ring after using Second Chance
+Confuse;{ba}{2};Wave X(2), Compel X(1), Dangerous
+Cursed Talisman;;Cursed Talisman must be immediately equipped when drawn and cannot be discarded. Anytime this model makes a roll using its Attack attribute discard the highest result rolled.

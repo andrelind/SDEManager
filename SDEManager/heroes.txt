@@ -16,6 +16,8 @@ Hearthsworn Fighter;Dwarf Hero;;6.3.6.1;2.1.0.0;0.2.0.0;2.0.0.0;2.0.0.0;Immune: 
 
 Hexcast Sorceress;Human Hero;;6.3.5.1;2.0.0.0;3.0.0.0;1.1.0.0;1.1.0.0;Magic X(8); Frozen Feet, Hobbled Hands, Broken Bones, Wizard Wings
 
+Nyan Nyan;Freyjan Hero;;7.3.5.1;3.0.0.0;3.0.0.0;2.0.0.0;0.2.0.0;9 Lives, Dodge, Luck; Teeth & Fur, Purr, Catnip Bomb
+
 Princess Ruby;Human Hero;;6.3.5.1;2.0.0.0;3.0.0.0;3.0.0.0;2.1.0.0;Magic X(6), Dodge; Maiden's Favor, Maiden's Token, Maiden's Kiss, Happily Ever After
 
 Royal Paladin;Human Hero;Paladin;6.3.5.1;3.0.0.0;1.1.0.0;1.1.0.0;2.0.0.0;Healer, Holy; Iron Halo, Smite, Elixir
@@ -28,4 +30,4 @@ Star Guild Sapper;Dwarf Hero;;6.3.6.1;2.1.0.0;1.1.0.0;2.0.0.0;2.0.0.0;Immune: X(
 
 Von Wilding;Human Hero;;6.3.5.2;1.1.0.0;3.0.0.0;1.1.0.0;0.2.0.0;Reach X(2);Whip Master, Crack the Whip, Shapeshift (Von Wilder), Holy Water, Holy Oil
 
-Von Wilder;Shapeshift;;8.3.5.2;1.1.0.0;3.0.0.0;2.0.0.0;1.1.0.0;Touch, Vulnerable X(Magic);Shag Fest, Shapeshift (Von Wilding)
+Von Wilder;Shapeshift;;8.3.5.2;1.1.0.0;3.0.0.0;2.0.0.0;1.1.0.0;Tough, Vulnerable X(Magic);Shag Fest, Shapeshift (Von Wilding)

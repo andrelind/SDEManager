@@ -8,7 +8,8 @@ typedef enum {
 	SDEAttributeTypeAreaEffect,
 	SDEAttributeTypeControlEffect,
 	SDEAttributeTypeActionEffect,
-	SDEAttributeTypeWound
+	SDEAttributeTypeWound,
+	SDEAttributeTypePotion
 } SDEAttributeType;
 
 typedef enum {
@@ -17,6 +18,13 @@ typedef enum {
 	SDEItemTypeGreen,
 	SDEItemTypeBlue
 } SDEItemType;
+
+typedef enum {
+	SDEItemBossNone,
+	SDEItemBossStarfire,
+	SDEItemBossRoxor,
+	SDEItemBossVonDrakk
+} SDEItemBoss;
 
 BOOL isIpad;
 

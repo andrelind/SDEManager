@@ -47,7 +47,7 @@
 	
 	DBCharacter* character = [DBCharacter MR_findAllSortedBy:@"name" ascending:YES withPredicate:[NSPredicate predicateWithFormat:@"NOT type LIKE 'Shapeshift'"]][indexPath.row];
 	
-	view.characterImageView.image = [UIImage imageNamed:character.imageName];
+	view.characterImageView.image = [UIImage imageNamed:character.name];
 	[view setName:character.name type:character.type];
 	
 	[view setMovementCount:character.movementValue];

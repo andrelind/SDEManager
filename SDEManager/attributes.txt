@@ -1,4 +1,5 @@
 -- Combat effects --
+0;9 Lives;When a model with 9 Lives takes their last wound, immediately roll {r}{+1}. Remove one wound counter for every star rolled. If no stars are rolled, the model is destroyed.
 0;Augment;Abilities with Augment may only target or affect friendly models that are hit, including the user.
 0;Backlash;If a model with Backlash exceeds an attack roll with their defence roll the attacker takes one wound. Wounds caused by Backlash do not advance the Power Gauge.
 0;Berserk;During its activation a model with Berserk may make a single melee attack costing no action points.
@@ -13,6 +14,7 @@
 0;Luck;A model with Luck may gain a Potion instead of a Heart when rolled on the dice and vice versa. In addition, when opening a treasure chest they may draw two cards from the treasure deck and equip one, discard the other.
 0;Lycanthropy;Wounded models that are not removed from play may gain {r}{+1} ATT and suffer Vulnerable: Magic.
 0;Massive Damage;When an attack with Massive Damage inflicts a wound it instead inflicts two wounds.
+0;Pounce; Before making an attack roll, immediately Fly up to 5 squares. The model must end this movement adjacent to an enemy model.
 0;Reach X;This ability allows the model to target an enemy with a melee attack up to X squares away. A model may use any of its abilities or special actions using Reach X, unless specified otherwise.
 0;Remedy;A model affected by Remedy may immediately remove all Status Effect counters.
 0;Resurrect;Choose a model that has been destroyed. Roll {b}{1}￼ for every heart on its stat card. Remove one wound counter for every star rolled. After the roll, if the target model has more hearts than wound counters, return it to play adjacent to the start marker. The model retains any equipment and potions that it had when it was destroyed. All status effects that it may have been suffering are removed.

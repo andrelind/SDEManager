@@ -25,7 +25,7 @@
 - (void)setStatusEffect:(SDEAttribute *)statusEffect {
 	_statusEffect = statusEffect;
 	
-	self.imageView.image = [UIImage imageNamed:statusEffect.title];
+	self.imageView.image = [UIImage imageNamed:[statusEffect.title stringByReplacingOccurrencesOfString:@": X" withString:@""]];
 	
 	self.attributedString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@: %@", statusEffect.title, statusEffect.longDescription]];
 	if(isIpad){

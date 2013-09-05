@@ -40,8 +40,10 @@
 	cell.textLabel.text = status.title;
 	cell.textLabel.font = [UIFont fontWithName:@"Adelon-Bold" size:15];
 	
-	cell.imageView.image = [UIImage imageNamed:status.title];
+	cell.imageView.image = [UIImage imageNamed:[status.title stringByReplacingOccurrencesOfString:@": X" withString:@""]];
 	cell.imageView.layer.cornerRadius = 22.5f;
+	cell.imageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
+	cell.imageView.layer.shouldRasterize = YES;
     
     return cell;
 }

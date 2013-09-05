@@ -57,7 +57,12 @@
 	
 	NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\n%@", name.uppercaseString, type.uppercaseString]];
 	if(isIpad){
-		[string setAttributes:@{NSFontAttributeName : [UIFont fontWithName:@"Adelon-Bold" size:18]} range:NSMakeRange(0, name.length+1)];
+		NSInteger fontSize = 18;
+		do {
+			[string setAttributes:@{NSFontAttributeName : [UIFont fontWithName:@"Adelon-Bold" size:fontSize]} range:NSMakeRange(0, name.length+1)];
+			fontSize--;
+		} while (string.size.width > self.name.frame.size.width);
+		
 		[string setAttributes:@{NSFontAttributeName : [UIFont fontWithName:@"Adelon-Bold" size:9]} range:NSMakeRange(name.length, type.length + 1)];
 		
 		NSMutableParagraphStyle *style2 = [[NSMutableParagraphStyle alloc] init];

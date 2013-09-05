@@ -6,6 +6,7 @@
 const struct SDEItemAttributes SDEItemAttributes = {
 	.additionalText = @"additionalText",
 	.attributeText = @"attributeText",
+	.boss = @"boss",
 	.header = @"header",
 	.modifier = @"modifier",
 	.name = @"name",
@@ -13,6 +14,7 @@ const struct SDEItemAttributes SDEItemAttributes = {
 };
 
 const struct SDEItemRelationships SDEItemRelationships = {
+	.actions = @"actions",
 	.attributes = @"attributes",
 	.characters = @"characters",
 };
@@ -46,6 +48,11 @@ const struct SDEItemFetchedProperties SDEItemFetchedProperties = {
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
+	if ([key isEqualToString:@"bossValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"boss"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
 	if ([key isEqualToString:@"typeValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"type"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
@@ -67,6 +74,32 @@ const struct SDEItemFetchedProperties SDEItemFetchedProperties = {
 
 @dynamic attributeText;
 
+
+
+
+
+
+@dynamic boss;
+
+
+
+- (int32_t)bossValue {
+	NSNumber *result = [self boss];
+	return [result intValue];
+}
+
+- (void)setBossValue:(int32_t)value_ {
+	[self setBoss:[NSNumber numberWithInt:value_]];
+}
+
+- (int32_t)primitiveBossValue {
+	NSNumber *result = [self primitiveBoss];
+	return [result intValue];
+}
+
+- (void)setPrimitiveBossValue:(int32_t)value_ {
+	[self setPrimitiveBoss:[NSNumber numberWithInt:value_]];
+}
 
 
 
@@ -118,6 +151,19 @@ const struct SDEItemFetchedProperties SDEItemFetchedProperties = {
 
 
 
+
+@dynamic actions;
+
+	
+- (NSMutableSet*)actionsSet {
+	[self willAccessValueForKey:@"actions"];
+  
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"actions"];
+  
+	[self didAccessValueForKey:@"actions"];
+	return result;
+}
+	
 
 @dynamic attributes;
 

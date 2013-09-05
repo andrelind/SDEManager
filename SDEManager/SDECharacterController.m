@@ -88,7 +88,7 @@
 	if(character.isShapeshiftedValue)
 		character = character.shapeshift;
 	
-	self.characterView.characterImageView.image = [UIImage imageNamed:character.imageName];
+	self.characterView.characterImageView.image = [UIImage imageNamed:character.name];
 	[self.characterView setName:character.name type:character.type];
 	
 	[self.characterView setMovementCount:character.movementValue];
@@ -133,11 +133,11 @@
 	[self setupItemWithType:SDEItemTypeGreen];
 	[self setupItemWithType:SDEItemTypeBlue];
 	
-	if(self.character.shapeshift && self.toolbarItems.count < 6){
+	if(self.character.shapeshift && self.toolbarItems.count < 7){
 		NSMutableArray* items = [NSMutableArray arrayWithArray:self.toolbarItems];
-		[items insertObject:self.shapeshiftButton atIndex:4];
+		[items insertObject:self.shapeshiftButton atIndex:5];
 		self.toolbarItems = items;
-	} else if(!self.character.shapeshift && self.toolbarItems.count >= 6) {
+	} else if(!self.character.shapeshift && self.toolbarItems.count >= 7) {
 		NSMutableArray* items = [NSMutableArray arrayWithArray:self.toolbarItems];
 		[items removeObject:self.shapeshiftButton];
 		self.toolbarItems = items;
@@ -170,11 +170,11 @@
 - (void)createTokensForCharacter:(SDECharacter *)character {
 	NSInteger delay = 0;
 	for(SDEAttribute* statusEffect in character.statusEffects){
-		double delayInSeconds = delay * 0.3f;
+		double delayInSeconds = delay * 0.15f;
 		delay++;
 		dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
 		dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-			[self createStatusEffect:statusEffect atPoint:CGPointMake(45, delay * 45)];
+			[self createStatusEffect:statusEffect atPoint:CGPointMake(self.view.frame.size.width*.5, 5)];
 		});
 	}
 }
@@ -213,6 +213,19 @@
 	}];
 }
 
+- (IBAction)addPotion:(UIBarButtonItem *)sender {
+	[MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
+		SDEAttribute* wound = [SDEAttribute MR_createInContext:localContext];
+		wound.title = @"Potion";
+		wound.typeValue = SDEAttributeTypePotion;
+		
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[self createStatusEffect:[wound MR_inThreadContext] atPoint:CGPointMake(110, 45)];
+		});
+		[[[self.character MR_inContext:localContext] statusEffectsSet] addObject:wound];
+	}];
+}
+
 - (IBAction)shapeshift:(id)sender {
 	[MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
 		SDECharacter* c = [self.character MR_inContext:localContext];
@@ -236,8 +249,12 @@
 		for (SDEAction* a in c.actions)
 			[attributes addObjectsFromArray:a.attributes.allObjects];
 		
-		for(SDEItem* i in c.items)
+		for(SDEItem* i in c.items){
 			[attributes addObjectsFromArray:i.attributes.allObjects];
+			
+			for(SDEAction* a in i.actions)
+				[attributes addObjectsFromArray:a.attributes.allObjects];
+		}
 		
 		for(SDEAttribute* a in [attributes sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES]]])
 			[self.flippedView addTitle:a.title text:a.longDescription];
@@ -273,10 +290,12 @@
 	[self.view addSubview:effectView];
 	
 	NSInteger woundCount = 0;
+	NSInteger potionCount = 0;
 	NSInteger statusCount = 0;
 	for(UIAttachmentBehavior* d in self.animator.behaviors){
 		if([d isKindOfClass:UIAttachmentBehavior.class]){
 			if([d.items.firstObject statusEffect].typeValue == SDEAttributeTypeWound) woundCount++;
+			else if([d.items.firstObject statusEffect].typeValue == SDEAttributeTypePotion) potionCount++;
 			else statusCount++;
 		}
 	}
@@ -285,10 +304,12 @@
 	UIAttachmentBehavior* spring = nil;
 	if(statusEffect.typeValue == SDEAttributeTypeWound)
 		spring = [[UIAttachmentBehavior alloc] initWithItem:effectView attachedToAnchor:CGPointMake(effectView.frame.size.width*.5 + 10, self.view.frame.size.height - 75 - woundCount*65)];
+	else if(statusEffect.typeValue == SDEAttributeTypePotion)
+		spring = [[UIAttachmentBehavior alloc] initWithItem:effectView attachedToAnchor:CGPointMake(effectView.frame.size.width*.5 + 65, self.view.frame.size.height - 75 - potionCount*65)];
 	else
 		spring = [[UIAttachmentBehavior alloc] initWithItem:effectView attachedToAnchor:CGPointMake(self.view.frame.size.width - effectView.frame.size.width*.5 - 10, self.view.frame.size.height - 75 - statusCount*65)];
 	spring.length = 0;
-	spring.damping = 0.7;
+	spring.damping = 0.6;
 	spring.frequency = 1.0;
 	[self.animator addBehavior:spring];
 
@@ -316,32 +337,59 @@
 	SDEItem* item = [self.character.items filteredSetUsingPredicate:[NSPredicate predicateWithFormat:@"type == %i", itemType]].anyObject;
 	UIButton* button = nil;
 	SDEItemView* itemView = nil;
+	CATransform3D rotationAndPerspectiveTransform = CATransform3DIdentity;
+	
 	if(itemType == SDEItemTypeRed){
 		button = self.redButton;
 		itemView = self.redItemView;
+		rotationAndPerspectiveTransform.m34 = 1.0 / 500;
+		rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 90.0f * M_PI / 180.0f, 1.0f, 0.0f, 0.0f);
 	} else if(itemType == SDEItemTypeYellow){
 		button = self.yellowButton;
 		itemView = self.yellowItemView;
+		rotationAndPerspectiveTransform.m34 = 1.0 / -500;
+		rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 90.0f * M_PI / 180.0f, 0.0f, 1.0f, 0.0f);
 	} else if(itemType == SDEItemTypeGreen){
 		button = self.greenButton;
 		itemView = self.greenItemView;
+		rotationAndPerspectiveTransform.m34 = 1.0 / 500;
+		rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 90.0f * M_PI / 180.0f, 0.0f, 1.0f, 0.0f);
 	} else if(itemType == SDEItemTypeBlue){
 		button = self.blueButton;
 		itemView = self.blueItemView;
+		rotationAndPerspectiveTransform.m34 = 1.0 / -500;
+		rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 90.0f * M_PI / 180.0f, 1.0f, 0.0f, 0.0f);
 	}
 	
 	if(item){
 		itemView.item = item;
 		button.hidden = NO;
 		itemView.hidden = NO;
+		itemView.alpha = 1;
+		itemView.layer.zPosition = -200;
+		itemView.layer.transform = rotationAndPerspectiveTransform;
 		
-		[UIView animateWithDuration:0.7 animations:^{
+		CGPoint trueCenter = itemView.center;
+		// Now set the view to outside
+		if(itemType == SDEItemTypeRed)
+			itemView.center = CGPointMake(itemView.center.x, -itemView.frame.size.height);
+		else if(itemType == SDEItemTypeYellow)
+			itemView.center = CGPointMake(-itemView.frame.size.width, itemView.center.y);
+		else if(itemType == SDEItemTypeGreen)
+			itemView.center = CGPointMake(self.view.frame.size.width + itemView.frame.size.width, itemView.center.y);
+		else if(itemType == SDEItemTypeBlue)
+			itemView.center = CGPointMake(itemView.center.x, self.view.frame.size.height + itemView.frame.size.height);
+		
+		[UIView animateWithDuration:.8 animations:^{
+			itemView.center = trueCenter;
+			itemView.layer.transform = CATransform3DIdentity;
 			button.alpha = 0;
-			itemView.alpha = 1;
 		} completion:^(BOOL finished) {
 			button.hidden = YES;
-			itemView.hidden = NO;
+			itemView.layer.transform = CATransform3DIdentity;
+			itemView.center = trueCenter;
 		}];
+
 		[itemView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapItem:)]];
 	} else {
 		// Remove card if there is one visible
@@ -416,7 +464,7 @@
 	if([segue.identifier isEqualToString:@"Status Effects"]){
 		for(SDEStatusEffectsViewController* c in ((UINavigationController *)segue.destinationViewController).viewControllers){
 			c.statusEffectDelegate = self;
-			[c.excludedStatuses addObjectsFromArray:[self.character.statusEffects.allObjects filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"type != %i", SDEAttributeTypeWound]]];
+			[c.excludedStatuses addObjectsFromArray:[self.character.statusEffects.allObjects filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"type != %i AND type != %i", SDEAttributeTypeWound, SDEAttributeTypePotion]]];
 		}
 		self.masterPopoverController = ((UIStoryboardPopoverSegue*)segue).popoverController;
 	}
@@ -439,7 +487,7 @@
 - (void)statusEffectViewWasTapped:(SDEStatusEffectView *)statusEffectView {
 	SDEAttribute* statusEffect = [statusEffectView.statusEffect MR_inThreadContext];
 	
-	if(statusEffect.typeValue == SDEAttributeTypeWound){
+	if(statusEffect.typeValue == SDEAttributeTypeWound || statusEffect.typeValue == SDEAttributeTypePotion){
 		[self statusEffectDetailView:nil didPressRemoveStatus:statusEffectView.statusEffect];
 		return;
 	}
@@ -468,6 +516,10 @@
 					if(statusEffect.typeValue == SDEAttributeTypeWound && [otherSpring.items.firstObject statusEffect].typeValue != SDEAttributeTypeWound)
 						continue;
 					if(statusEffect.typeValue != SDEAttributeTypeWound && [otherSpring.items.firstObject statusEffect].typeValue == SDEAttributeTypeWound)
+						continue;
+					if(statusEffect.typeValue == SDEAttributeTypePotion && [otherSpring.items.firstObject statusEffect].typeValue != SDEAttributeTypePotion)
+						continue;
+					if(statusEffect.typeValue != SDEAttributeTypePotion && [otherSpring.items.firstObject statusEffect].typeValue == SDEAttributeTypePotion)
 						continue;
 					
 					double delayInSeconds = .1 * (delay);

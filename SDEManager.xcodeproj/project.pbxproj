@@ -57,6 +57,8 @@
 		1ACE3BB217CE00D000EEB5DC /* SDEDiceStatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE3BB117CE00D000EEB5DC /* SDEDiceStatsViewController.m */; };
 		1ACE3BB517CE1B4E00EEB5DC /* SDEAreaAndControlEffectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE3BB417CE1B4E00EEB5DC /* SDEAreaAndControlEffectsViewController.m */; };
 		1ACE3BB817CE1EF500EEB5DC /* SDEAreaOrControlEffectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE3BB717CE1EF500EEB5DC /* SDEAreaOrControlEffectViewController.m */; };
+		1ACE3BBB17CF299900EEB5DC /* SDEAttributeTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE3BBA17CF299900EEB5DC /* SDEAttributeTextView.m */; };
+		1ACE3BBE17CF2C0E00EEB5DC /* SDEAttributeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE3BBD17CF2C0E00EEB5DC /* SDEAttributeLabel.m */; };
 		1ADB607C17BE45700089DC05 /* MagicalImportFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ADB604417BE45700089DC05 /* MagicalImportFunctions.m */; };
 		1ADB607D17BE45700089DC05 /* NSAttributeDescription+MagicalDataImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ADB604617BE45700089DC05 /* NSAttributeDescription+MagicalDataImport.m */; };
 		1ADB607E17BE45700089DC05 /* NSEntityDescription+MagicalDataImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ADB604817BE45700089DC05 /* NSEntityDescription+MagicalDataImport.m */; };
@@ -181,6 +183,10 @@
 		1ACE3BB417CE1B4E00EEB5DC /* SDEAreaAndControlEffectsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDEAreaAndControlEffectsViewController.m; sourceTree = "<group>"; };
 		1ACE3BB617CE1EF500EEB5DC /* SDEAreaOrControlEffectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDEAreaOrControlEffectViewController.h; sourceTree = "<group>"; };
 		1ACE3BB717CE1EF500EEB5DC /* SDEAreaOrControlEffectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDEAreaOrControlEffectViewController.m; sourceTree = "<group>"; };
+		1ACE3BB917CF299900EEB5DC /* SDEAttributeTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDEAttributeTextView.h; sourceTree = "<group>"; };
+		1ACE3BBA17CF299900EEB5DC /* SDEAttributeTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDEAttributeTextView.m; sourceTree = "<group>"; };
+		1ACE3BBC17CF2C0E00EEB5DC /* SDEAttributeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDEAttributeLabel.h; sourceTree = "<group>"; };
+		1ACE3BBD17CF2C0E00EEB5DC /* SDEAttributeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDEAttributeLabel.m; sourceTree = "<group>"; };
 		1ADB604317BE45700089DC05 /* MagicalImportFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicalImportFunctions.h; sourceTree = "<group>"; };
 		1ADB604417BE45700089DC05 /* MagicalImportFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MagicalImportFunctions.m; sourceTree = "<group>"; };
 		1ADB604517BE45700089DC05 /* NSAttributeDescription+MagicalDataImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributeDescription+MagicalDataImport.h"; sourceTree = "<group>"; };
@@ -568,6 +574,10 @@
 				1A29336917BBAF730041A615 /* SDEOutlineLabel.m */,
 				1A29336B17BBBD7A0041A615 /* SDEAttributeView.h */,
 				1A29336C17BBBD7A0041A615 /* SDEAttributeView.m */,
+				1ACE3BB917CF299900EEB5DC /* SDEAttributeTextView.h */,
+				1ACE3BBA17CF299900EEB5DC /* SDEAttributeTextView.m */,
+				1ACE3BBC17CF2C0E00EEB5DC /* SDEAttributeLabel.h */,
+				1ACE3BBD17CF2C0E00EEB5DC /* SDEAttributeLabel.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -685,6 +695,7 @@
 			files = (
 				1ACB388E17C39B2500965B37 /* SDEStatusEffectDetailView.m in Sources */,
 				1ADB608417BE45700089DC05 /* NSManagedObject+MagicalDataImport.m in Sources */,
+				1ACE3BBE17CF2C0E00EEB5DC /* SDEAttributeLabel.m in Sources */,
 				1ADB609117BE45700089DC05 /* MagicalRecord+iCloud.m in Sources */,
 				1A29336A17BBAF730041A615 /* SDEOutlineLabel.m in Sources */,
 				1ADB608617BE45700089DC05 /* NSManagedObject+MagicalRecord.m in Sources */,
@@ -732,6 +743,7 @@
 				1AFFAA9817C2472A00C1983F /* SDECharacterList.m in Sources */,
 				1ADB608517BE45700089DC05 /* NSManagedObject+MagicalFinders.m in Sources */,
 				1ADB607F17BE45700089DC05 /* NSNumber+MagicalDataImport.m in Sources */,
+				1ACE3BBB17CF299900EEB5DC /* SDEAttributeTextView.m in Sources */,
 				1ADB609C17BE46190089DC05 /* SDEManagerModel.xcdatamodeld in Sources */,
 				1ADB608D17BE45700089DC05 /* NSPersistentStore+MagicalRecord.m in Sources */,
 				1A6A2AD717BE584F00802544 /* SDEAttribute.m in Sources */,

@@ -75,17 +75,25 @@
 				if(props.count > 2){
 					SDEItem* item = [SDEItem MR_createInContext:localContext];
 					item.type = @([props[0] integerValue]);
-					item.name = props[1];
-					item.header = props[2];
-					item.modifier = props[3];
-					item.additionalText = props[5];
+					item.boss = @([props[1] integerValue]);
+					item.name = props[2];
+					item.header = props[3];
+					item.modifier = props[4];
+					item.additionalText = props[7];
 					
 					NSArray* attributes = nil;
-					item.attributeText = [self findAttributeInString:props[4] attributeNames:&attributes];
+					item.attributeText = [self findAttributeInString:props[5] attributeNames:&attributes];
 					
 					for(NSString* attributeName in attributes){
 						SDEAttribute* attribute = [SDEAttribute MR_findFirstByAttribute:@"title" withValue:attributeName];
 						if(attribute) [item addAttributesObject:attribute];
+					}
+					
+					NSArray* actions = [props[6] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@","]];
+					for(NSString* actionName in actions){
+						NSString* trimmedName = [actionName stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+						SDEAction* a = [SDEAction MR_findFirstByAttribute:@"title" withValue:trimmedName];
+						if(a) [item.actionsSet addObject:a];
 					}
 				}
 			}
