@@ -3,7 +3,7 @@
 #import "SDEAttributeTextView.h"
 
 @interface SDECharacterBackCell ()
-@property (nonatomic, weak) IBOutlet UITextView* textView;
+
 @property (nonatomic, retain) NSMutableAttributedString* storedAttributeString;
 
 @property (nonatomic, retain) SDEOutlineLabel* diceLabel;

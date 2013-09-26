@@ -3,6 +3,7 @@
 0;Augment;Abilities with Augment may only target or affect friendly models that are hit, including the user.
 0;Backlash;If a model with Backlash exceeds an attack roll with their defence roll the attacker takes one wound. Wounds caused by Backlash do not advance the Power Gauge.
 0;Berserk;During its activation a model with Berserk may make a single melee attack costing no action points.
+0;Cola;Once per activation roll {b}{1}. For every star rolled place a potion counter on Candy’s card.
 0;Dangerous;Abilities with Dangerous damage both enemy and friendly models that are hit.
 0;Dodge;A model with Dodge may use their DEX when making defense rolls unless they are suffering from Knockdown, Immobile or Slow
 0;Fly;A model with Fly may ignore and move through squares containing enemy models, difficult terrain, and tile effects.

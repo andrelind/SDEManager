@@ -4,6 +4,11 @@ Bear Hug;{ra}{2};Immobile, Weak
 Shapeshift;{ba}{1};Deeproot Druid
 Nourishing Berries;{p}{};All Heroes gain Healer
 
+-- Candy & Cola --
+Vending Machine;{ba}{2};Augment, Range X(6). Remove a single potion counter from Candy's card and place it on target Hero's card.
+Soothing Soda;{p}{};Immune: X(Status Effects)
+Sugar Rush;{p}{3};{a}{+1}
+
 -- Celestial Herald --
 Arrow Storm;{ra}{2};DEX vs. ARM, Spray X(4)
 Heart Seeker;{ra}{2};Missile X(8), {r}{+1} DEX, Hookshot

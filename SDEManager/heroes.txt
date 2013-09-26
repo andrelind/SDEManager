@@ -1,5 +1,7 @@
 Angry Bear;Shapeshift;;6.3.5.1;0.2.0.0;0.2.0.0;1.1.0.0;2.0.0.0;Immune: X(Poison), Immune: X(Knockdown); Bear Charge, Bear Hug, Shapeshift(Deeproot Druid), Nourishing Berries
 
+Candy & Cola;Human Hero;;6.3.5.3;2.0.0.0;3.0.0.0;0.2.0.0;1.1.0.0;Luck, Cola;Vending Machine, Soothing Soda, Sugar Rush
+
 Celestial Herald;Celestial Hero;;7.3.5.1;2.0.0.0;3.0.0.0;1.1.0.0;0.2.0.0;Fly, Missile X(6), Immune: X(Knockdown);  Arrow Storm, Heart Seeker, Halo Extract
 
 Claw Tribe Barbarian;Human Hero;;6.3.5.1;0.2.0.0;3.0.0.0;2.0.0.0;2.0.0.0; Berserk, Tough;Rage, Fury's Blood

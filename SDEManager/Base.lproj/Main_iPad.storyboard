@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4504" systemVersion="12E55" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="tOt-YA-NNE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12E55" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="tOt-YA-NNE">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3734.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <scenes>
         <!--Character Controller-->
@@ -797,7 +797,7 @@
             <objects>
                 <tableViewController id="rCK-Wl-pcv" customClass="SDEAreaAndControlEffectsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="saC-je-jra">
-                        <rect key="frame" x="0.0" y="64" width="320" height="1112"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="1432"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -860,11 +860,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Ulu-uS-Kq4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="i23-nS-Ba3">
-                        <rect key="frame" x="0.0" y="64" width="320" height="984"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="1368"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B0X-ZB-MiR">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="984"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="1368"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -965,7 +965,7 @@
             <objects>
                 <tableViewController modalPresentationStyle="currentContext" id="0CO-AX-0P5" customClass="SDEStatusEffectsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="h7S-dS-xgc">
-                        <rect key="frame" x="0.0" y="64" width="320" height="1112"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="1432"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -1166,14 +1166,14 @@
                         </view>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SDECharacterCell" id="NRc-D6-MhR" customClass="SDECharacterCell">
-                                <rect key="frame" x="25" y="69" width="300" height="420"/>
+                                <rect key="frame" x="25" y="69" width="300" height="419.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="420"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="HeroCardFront" translatesAutoresizingMaskIntoConstraints="NO" id="6Tx-b1-CIe">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="415"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="414"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="300" id="ku1-Jc-QG3"/>
@@ -1324,6 +1324,7 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="hh2-IH-m7M" secondAttribute="trailing" constant="28" id="1Bo-wt-Ze1"/>
                                     <constraint firstItem="1aL-eC-QFW" firstAttribute="top" secondItem="cEr-Y4-rpK" secondAttribute="bottom" constant="4" id="4y6-yw-Rdx"/>
@@ -1356,7 +1357,6 @@
                                     <outlet property="attStats" destination="96m-lz-a6t" id="xUU-95-kuy"/>
                                     <outlet property="attributesLabel" destination="cEr-Y4-rpK" id="vzn-2i-CA3"/>
                                     <outlet property="attributesView" destination="1aL-eC-QFW" id="Xy0-xz-to6"/>
-                                    <outlet property="background" destination="6Tx-b1-CIe" id="eQi-xA-mWt"/>
                                     <outlet property="characterImageView" destination="3fh-ny-KK1" id="uVK-6a-yoE"/>
                                     <outlet property="dexStats" destination="hh2-IH-m7M" id="ggv-NE-oGS"/>
                                     <outlet property="heartsLabel" destination="rP6-AD-cRj" id="d44-W3-45u"/>

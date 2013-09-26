@@ -188,6 +188,10 @@
 		}];
 	}
 
+	UISplitViewController* splitViewController = (UISplitViewController *)self.window.rootViewController;
+	splitViewController.delegate = [splitViewController.viewControllers[1] viewControllers][0];
+	splitViewController.presentsWithGesture = YES;
+
     return YES;
 }
 

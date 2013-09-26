@@ -32,6 +32,7 @@
 @property (nonatomic, retain) IBOutlet UIBarButtonItem* shapeshiftButton;
 
 @property (nonatomic, retain) UIPopoverController* masterPopoverController;
+@property (nonatomic, retain) UIPopoverController* generalPopoverController;
 @property (nonatomic, retain) SDECharacterBackCell *flippedView;
 @property (nonatomic, assign) BOOL isFlipped;
 
@@ -43,10 +44,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
-	self.splitViewController.delegate = self;
-	self.splitViewController.presentsWithGesture = YES;
-	
+		
 	self.redItemView.alpha = 0;
 	self.yellowItemView.alpha = 0;
 	self.greenItemView.alpha = 0;
@@ -162,7 +160,8 @@
 		self.characterListButton.alpha = 0.0;
 		self.characterListButton.enabled = NO;
 	}];
-    self.masterPopoverController = nil;
+	self.masterPopoverController = nil;
+	
 	[self removeAllTokens];
 	[self createTokensForCharacter:self.character];
 }
@@ -170,7 +169,7 @@
 - (void)createTokensForCharacter:(SDECharacter *)character {
 	NSInteger delay = 0;
 	for(SDEAttribute* statusEffect in character.statusEffects){
-		double delayInSeconds = delay * 0.15f;
+		double delayInSeconds = delay * 0.2f;
 		delay++;
 		dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
 		dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
@@ -194,8 +193,11 @@
 				// Remove the item
 				[spring.items[0] removeFromSuperview];
 			}];
-		}
+		} else if([spring isKindOfClass:UIDynamicItemBehavior.class])
+			[self.animator removeBehavior:spring];
 	}
+	
+	NSLog(@"%@", self.animator.behaviors);
 }
 
 #pragma mark - Actions
@@ -278,8 +280,11 @@
 	}
 }
 
-- (IBAction)showList:(id)sender {
-	[self.splitViewController performSelector:@selector(toggleMasterVisible:)];
+- (IBAction)showList:(UIButton *)sender {
+	if(!self.masterPopoverController){
+		self.masterPopoverController = [[UIPopoverController alloc] initWithContentViewController:self.splitViewController.viewControllers[0]];
+	}
+	[self.masterPopoverController presentPopoverFromRect:sender.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 - (void)createStatusEffect:(SDEAttribute *)statusEffect atPoint:(CGPoint)point {
@@ -454,8 +459,8 @@
 	nav.itemType = type;
 	nav.itemControllerDelegate	= self;
 	
-	self.masterPopoverController = [[UIPopoverController alloc] initWithContentViewController:nav];
-	[self.masterPopoverController presentPopoverFromRect:button.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+	self.generalPopoverController = [[UIPopoverController alloc] initWithContentViewController:nav];
+	[self.generalPopoverController presentPopoverFromRect:button.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 #pragma mark - Segue
@@ -466,7 +471,7 @@
 			c.statusEffectDelegate = self;
 			[c.excludedStatuses addObjectsFromArray:[self.character.statusEffects.allObjects filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"type != %i AND type != %i", SDEAttributeTypeWound, SDEAttributeTypePotion]]];
 		}
-		self.masterPopoverController = ((UIStoryboardPopoverSegue*)segue).popoverController;
+		self.generalPopoverController = ((UIStoryboardPopoverSegue*)segue).popoverController;
 	}
 }
 
@@ -496,9 +501,9 @@
 	view.statusEffect = statusEffect;
 	view.statusEffectDelegate = self;
 	
-	self.masterPopoverController = [[UIPopoverController alloc] initWithContentViewController:view];
-	self.masterPopoverController.popoverContentSize = CGSizeMake(320, view.textHeight);
-	[self.masterPopoverController presentPopoverFromRect:statusEffectView.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+	self.generalPopoverController = [[UIPopoverController alloc] initWithContentViewController:view];
+	self.generalPopoverController.popoverContentSize = CGSizeMake(320, view.textHeight);
+	[self.generalPopoverController presentPopoverFromRect:statusEffectView.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 #pragma mark - SDEStatusEffectDetailViewDelegate
@@ -550,8 +555,8 @@
 		}
 	}
 	
-	[self.masterPopoverController dismissPopoverAnimated:YES];
-	self.masterPopoverController = nil;
+	[self.generalPopoverController dismissPopoverAnimated:YES];
+	self.generalPopoverController = nil;
 }
 
 #pragma mark - SDEItemListViewControllerDelegate
@@ -564,8 +569,8 @@
 	_character = [self.character MR_inThreadContext];
 	[self setupItemWithType:item.typeValue];
 	
-	[self.masterPopoverController dismissPopoverAnimated:YES];
-	self.masterPopoverController = nil;
+	[self.generalPopoverController dismissPopoverAnimated:YES];
+	self.generalPopoverController = nil;
 }
 
 @end

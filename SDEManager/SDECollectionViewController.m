@@ -90,6 +90,15 @@
 
 #pragma mark - CollectionView Delegate
 
+- (IBAction)flipView:(id)sender {
+	if(self.flippedIndexPath)
+		[self collectionView:self.collectionView shouldSelectItemAtIndexPath:self.flippedIndexPath];
+	else {
+		NSIndexPath* path = [self.collectionView indexPathsForVisibleItems][0];
+		[self collectionView:self.collectionView didSelectItemAtIndexPath:path];
+	}
+}
+
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if([self.flippedIndexPath isEqual:indexPath]){
 		UICollectionViewCell *futureCell = [collectionView cellForItemAtIndexPath:indexPath];
@@ -128,6 +137,16 @@
 	
 	for(SDEAttribute* a in [attributes sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES]]])
 		[self.flippedView addTitle:a.title text:a.longDescription];
+	
+	BOOL tapFound = NO;
+	for(UIGestureRecognizer* gesture in self.flippedView.gestureRecognizers){
+		if([gesture isKindOfClass:UITapGestureRecognizer.class]) tapFound = YES;
+	}
+	
+	if(!tapFound){
+		UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(flipView:)];
+		[self.flippedView.textView addGestureRecognizer:tap];
+	}
 	
 	[UIView transitionFromView:currentCell.contentView
 						toView:self.flippedView
