@@ -20,6 +20,7 @@
 - (void)setEffect:(SDEAttribute *)effect {
 	_effect = effect;
 	
+    self.title = effect.title;
 //	self.imageView.image = [UIImage imageNamed:effect.title];
 	
 	self.attributedString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@: %@\n\n", effect.title, effect.longDescription]];
