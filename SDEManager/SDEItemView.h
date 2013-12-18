@@ -2,7 +2,7 @@
 
 @class SDEItem;
 
-@interface SDEItemView : UIScrollView
+@interface SDEItemView : UIView
 
 @property (nonatomic, retain) SDEItem *item;
 

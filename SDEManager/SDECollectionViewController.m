@@ -40,8 +40,6 @@
 	if(self.flippedIndexPath)
 		[self collectionView:collectionView shouldSelectItemAtIndexPath:self.flippedIndexPath];
 	
-	NSDate* start = NSDate.date;
-	
     SDECharacterCell* view = [collectionView dequeueReusableCellWithReuseIdentifier:@"SDECharacterCell" forIndexPath:indexPath];
 	view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"HeroCardFront"]];
 	
@@ -82,8 +80,6 @@
 	
 	for (SDEAction* a in character.actions)
 		[view addAttributeIcon:a.token title:a.title text:a.text];
-		
-	NSLog(@"%f", [NSDate.date timeIntervalSinceDate:start]);
 	
     return view;
 }

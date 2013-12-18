@@ -50,6 +50,16 @@
 	self.greenItemView.alpha = 0;
 	self.blueItemView.alpha = 0;
 	
+	self.flippedView = [NSBundle.mainBundle loadNibNamed:@"SDECharacterBackCell" owner:self options:nil][0];
+	if(isIpad)
+		self.flippedView.frame = CGRectMake(0, 0, 300, 420);
+	
+	self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	
 	if(UIInterfaceOrientationIsLandscape(self.interfaceOrientation)){
 		self.characterListButton.alpha = 0.0;
 		self.characterListButton.enabled = NO;
@@ -57,12 +67,6 @@
 	} else {
 		self.character = [SDECharacter MR_findAllSortedBy:@"name" ascending:YES withPredicate:[NSPredicate predicateWithFormat:@"NOT type LIKE 'Shapeshift'"]].firstObject;
 	}
-	
-	self.flippedView = [NSBundle.mainBundle loadNibNamed:@"SDECharacterBackCell" owner:self options:nil][0];
-	if(isIpad)
-		self.flippedView.frame = CGRectMake(0, 0, 300, 420);
-	
-	self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
 }
 
 - (void)setCharacter:(SDECharacter *)character {
@@ -197,7 +201,7 @@
 			[self.animator removeBehavior:spring];
 	}
 	
-	NSLog(@"%@", self.animator.behaviors);
+	NSLog(@"Remaining behaviours: %@", self.animator.behaviors);
 }
 
 #pragma mark - Actions
@@ -298,7 +302,7 @@
 	NSInteger potionCount = 0;
 	NSInteger statusCount = 0;
 	for(UIAttachmentBehavior* d in self.animator.behaviors){
-		if([d isKindOfClass:UIAttachmentBehavior.class]){
+		if([d isKindOfClass:UIAttachmentBehavior.class] && [d.items.firstObject isKindOfClass:SDEStatusEffectView.class]){
 			if([d.items.firstObject statusEffect].typeValue == SDEAttributeTypeWound) woundCount++;
 			else if([d.items.firstObject statusEffect].typeValue == SDEAttributeTypePotion) potionCount++;
 			else statusCount++;
@@ -331,39 +335,25 @@
 	properties.elasticity = 0;
 	
 	[self.animator addBehavior:properties];
-
-	[self.collider removeAllBoundaries];
-	for(SDEStatusEffectView* v in self.collider.items)
-		[self.collider addBoundaryWithIdentifier:v.statusEffect.title forPath:[UIBezierPath bezierPathWithRoundedRect:v.bounds cornerRadius:v.bounds.size.width*.5]];
-
 }
 
 - (void)setupItemWithType:(SDEItemType)itemType {
 	SDEItem* item = [self.character.items filteredSetUsingPredicate:[NSPredicate predicateWithFormat:@"type == %i", itemType]].anyObject;
 	UIButton* button = nil;
 	SDEItemView* itemView = nil;
-	CATransform3D rotationAndPerspectiveTransform = CATransform3DIdentity;
 	
 	if(itemType == SDEItemTypeRed){
 		button = self.redButton;
 		itemView = self.redItemView;
-		rotationAndPerspectiveTransform.m34 = 1.0 / 500;
-		rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 90.0f * M_PI / 180.0f, 1.0f, 0.0f, 0.0f);
 	} else if(itemType == SDEItemTypeYellow){
 		button = self.yellowButton;
 		itemView = self.yellowItemView;
-		rotationAndPerspectiveTransform.m34 = 1.0 / -500;
-		rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 90.0f * M_PI / 180.0f, 0.0f, 1.0f, 0.0f);
 	} else if(itemType == SDEItemTypeGreen){
 		button = self.greenButton;
 		itemView = self.greenItemView;
-		rotationAndPerspectiveTransform.m34 = 1.0 / 500;
-		rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 90.0f * M_PI / 180.0f, 0.0f, 1.0f, 0.0f);
 	} else if(itemType == SDEItemTypeBlue){
 		button = self.blueButton;
 		itemView = self.blueItemView;
-		rotationAndPerspectiveTransform.m34 = 1.0 / -500;
-		rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 90.0f * M_PI / 180.0f, 1.0f, 0.0f, 0.0f);
 	}
 	
 	if(item){
@@ -371,11 +361,8 @@
 		button.hidden = NO;
 		itemView.hidden = NO;
 		itemView.alpha = 1;
-		itemView.layer.zPosition = -200;
-		itemView.layer.transform = rotationAndPerspectiveTransform;
 		
 		CGPoint trueCenter = itemView.center;
-		// Now set the view to outside
 		if(itemType == SDEItemTypeRed)
 			itemView.center = CGPointMake(itemView.center.x, -itemView.frame.size.height);
 		else if(itemType == SDEItemTypeYellow)
@@ -385,21 +372,43 @@
 		else if(itemType == SDEItemTypeBlue)
 			itemView.center = CGPointMake(itemView.center.x, self.view.frame.size.height + itemView.frame.size.height);
 		
+		UIAttachmentBehavior* a = nil;
+		for(UIAttachmentBehavior* attach in self.animator.behaviors){
+			if([attach.items.firstObject isEqual:itemView]){
+				a = attach;
+				break;
+			}
+		}
+		if(!a){
+			UIAttachmentBehavior* spring = [[UIAttachmentBehavior alloc] initWithItem:itemView attachedToAnchor:trueCenter];
+			spring.length = 0;
+			spring.damping = 0.6;
+			spring.frequency = 1.0;
+			[self.animator addBehavior:spring];
+			
+			UIDynamicItemBehavior* properties = [[UIDynamicItemBehavior alloc] initWithItems:@[itemView]];
+			properties.angularResistance = .5;
+			properties.elasticity = 0;
+			
+			[self.animator addBehavior:properties];
+		}
+		
 		[UIView animateWithDuration:.8 animations:^{
-			itemView.center = trueCenter;
-			itemView.layer.transform = CATransform3DIdentity;
 			button.alpha = 0;
 		} completion:^(BOOL finished) {
 			button.hidden = YES;
-			itemView.layer.transform = CATransform3DIdentity;
-			itemView.center = trueCenter;
 		}];
-
+		button.hidden = YES;
 		[itemView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapItem:)]];
 	} else {
 		// Remove card if there is one visible
 		button.hidden = NO;
 		itemView.hidden = NO;
+		
+		for(UIAttachmentBehavior* attach in self.animator.behaviors){
+			if([attach.items.firstObject isEqual:itemView])
+				[self.animator removeBehavior:attach];
+		}
 		
 		[UIView animateWithDuration:0.7 animations:^{
 			button.alpha = 1;

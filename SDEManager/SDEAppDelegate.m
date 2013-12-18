@@ -113,47 +113,46 @@
 					DBCharacter* character = [DBCharacter MR_createInContext:localContext];
 					character.name = props[0];
 					character.type = props[1];
-					character.imageName = props[2];
 					
-					NSArray* baseStats = [props[3] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"."]];
+					NSArray* baseStats = [props[2] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"."]];
 					character.movement = @([baseStats[0] integerValue]);
 					character.numberOfActions = @([baseStats[1] integerValue]);
 					character.numberOfHearts = @([baseStats[2] integerValue]);
 					character.numberOfPotions = @([baseStats[3] integerValue]);
 					
-					NSArray* attStats = [props[4] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"."]];
+					NSArray* attStats = [props[3] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"."]];
 					character.attBlueDice = @([attStats[0] integerValue]);
 					character.attRedDice = @([attStats[1] integerValue]);
 					character.attGreenDice = @([attStats[2] integerValue]);
 					character.attWhiteDice = @([attStats[3] integerValue]);
 
-					NSArray* armStats = [props[5] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"."]];
+					NSArray* armStats = [props[4] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"."]];
 					character.armBlueDice = @([armStats[0] integerValue]);
 					character.armRedDice = @([armStats[1] integerValue]);
 					character.armGreenDice = @([armStats[2] integerValue]);
 					character.armWhiteDice = @([armStats[3] integerValue]);
 
-					NSArray* willStats = [props[6] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"."]];
+					NSArray* willStats = [props[5] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"."]];
 					character.willBlueDice = @([willStats[0] integerValue]);
 					character.willRedDice = @([willStats[1] integerValue]);
 					character.willGreenDice = @([willStats[2] integerValue]);
 					character.willWhiteDice = @([willStats[3] integerValue]);
 
-					NSArray* dexStats = [props[7] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"."]];
+					NSArray* dexStats = [props[6] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"."]];
 					character.dexBlueDice = @([dexStats[0] integerValue]);
 					character.dexRedDice = @([dexStats[1] integerValue]);
 					character.dexGreenDice = @([dexStats[2] integerValue]);
 					character.dexWhiteDice = @([dexStats[3] integerValue]);
 	
 					NSArray* attributes = nil;
-					character.abilitiesText = [self findAttributeInString:props[8] attributeNames:&attributes];
+					character.abilitiesText = [self findAttributeInString:props[7] attributeNames:&attributes];
 					
 					for(NSString* attributeName in attributes){
 						SDEAttribute* attribute = [SDEAttribute MR_findFirstByAttribute:@"title" withValue:attributeName];
 						if(attribute) [character addAbilitiesObject:attribute];
 					}
 					
-					NSArray* actions = [props[9] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@","]];
+					NSArray* actions = [props[8] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@","]];
 					for(NSString* actionName in actions){
 						NSString* trimmedName = [actionName stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 						

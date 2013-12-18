@@ -71,7 +71,6 @@
 	
 	self.attributesLabel.text = item.attributeText;
 	
-	
 	// Create actions + additional text
 	NSMutableAttributedString* additionals = [[NSMutableAttributedString alloc] init];
 	for(SDEAction* action in item.actions){
@@ -104,6 +103,10 @@
 	[additionals appendAttributedString:additionalText];
 	
 	self.additionalTextView.attributedText = additionals;
+	
+	if(!self.gestureRecognizers.count){
+#error Add Pan
+	}
 }
 
 - (void)setText:(NSString *)text onLabel:(UILabel *)label withFontSize:(CGFloat)size {

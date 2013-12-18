@@ -31,7 +31,7 @@
 		self.attributesLabel.font = [UIFont fontWithName:@"Adelon-Bold" size:11];
 	} else {
 		font = [UIFont fontWithName:@"Adelon-Bold" size:16];
-		self.attributesLabel.font = [UIFont fontWithName:@"Adelon-Bold" size:7];
+		self.attributesLabel.font = [UIFont fontWithName:@"Adelon-Bold" size:8];
 	}
 	
 	self.movementLabel.font = font;
@@ -69,8 +69,8 @@
 		style2.maximumLineHeight = 7;
 		[string addAttribute:NSParagraphStyleAttributeName value:style2 range:NSMakeRange(name.length, type.length + 1)];
 	} else {
-		[string setAttributes:@{NSFontAttributeName : [UIFont fontWithName:@"Adelon-Bold" size:15]} range:NSMakeRange(0, name.length+1)];
-		[string setAttributes:@{NSFontAttributeName : [UIFont fontWithName:@"Adelon-Bold" size:7]} range:NSMakeRange(name.length, type.length + 1)];
+		[string setAttributes:@{NSFontAttributeName : [UIFont fontWithName:@"Adelon-Bold" size:16]} range:NSMakeRange(0, name.length+1)];
+		[string setAttributes:@{NSFontAttributeName : [UIFont fontWithName:@"Adelon-Bold" size:8]} range:NSMakeRange(name.length, type.length + 1)];
 		
 		NSMutableParagraphStyle *style2 = [[NSMutableParagraphStyle alloc] init];
 		style2.maximumLineHeight = 5;
