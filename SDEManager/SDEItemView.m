@@ -105,7 +105,7 @@
 	self.additionalTextView.attributedText = additionals;
 	
 	if(!self.gestureRecognizers.count){
-#error Add Pan
+#warning Add Pan
 	}
 }
 

@@ -185,7 +185,7 @@
 - (void)removeAllTokens {
 	// Remove old status effects
 	for(UIAttachmentBehavior* spring in self.animator.behaviors){
-		if([spring isKindOfClass:UIAttachmentBehavior.class]){
+		if([spring isKindOfClass:UIAttachmentBehavior.class] && ![spring.items.firstObject isKindOfClass:SDEItemView.class]){
 			[self.animator removeBehavior:spring];
 			[self.collider removeItem:spring.items[0]];
 			
@@ -379,7 +379,7 @@
 				break;
 			}
 		}
-		if(!a){
+		if(!a && itemView){
 			UIAttachmentBehavior* spring = [[UIAttachmentBehavior alloc] initWithItem:itemView attachedToAnchor:trueCenter];
 			spring.length = 0;
 			spring.damping = 0.6;
@@ -389,8 +389,16 @@
 			UIDynamicItemBehavior* properties = [[UIDynamicItemBehavior alloc] initWithItems:@[itemView]];
 			properties.angularResistance = .5;
 			properties.elasticity = 0;
+			properties.resistance = 0.9;
 			
 			[self.animator addBehavior:properties];
+			
+			double delayInSeconds = 2.0;
+			dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+			dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+				[self.animator removeBehavior:spring];
+				[self.animator removeBehavior:properties];
+			});
 		}
 		
 		[UIView animateWithDuration:.8 animations:^{
@@ -519,8 +527,8 @@
 
 - (void)statusEffectDetailView:(SDEStatusEffectDetailView *)view didPressRemoveStatus:(SDEAttribute *)statusEffect {
 	for(UIAttachmentBehavior* spring in self.animator.behaviors){
-		if([spring isKindOfClass:UIAttachmentBehavior.class]){
-			if([((SDEStatusEffectView*)spring.items[0]).statusEffect isEqual:statusEffect]){
+		if([spring isKindOfClass:UIAttachmentBehavior.class] && [spring.items.firstObject isKindOfClass:SDEStatusEffectView.class]){
+			if([((SDEStatusEffectView*)spring.items.firstObject).statusEffect isEqual:statusEffect]){
 				// Iterate all of the items above and move them downwards
 				NSInteger delay = 0;
 				for(NSInteger i = [self.animator.behaviors indexOfObject:spring] + 1; i < self.animator.behaviors.count; i++){
